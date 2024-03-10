@@ -20,6 +20,8 @@ int main(int argc, char **argv)
     struct sigaction  sig;
     pid_t Process_Id;
 
+	(void)argc;
+	(void)**argv;
     Process_Id = getpid();
     ft_putstr_fd("Hello ! The Process Id For THis Program Is : ", 1);
     ft_putnbr_fd(Process_Id, 1);

@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
     int Compteur;
 	if (argc != 3)
 	{
+		ft_putstr_fd("Please Make Sure That You have Pass the Target PID and Your Message !", 1);
 		return (1);
 	}
 
