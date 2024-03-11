@@ -1,20 +1,28 @@
 #include "../Minitalk.h"
 // SIGUSR1 = 0
 // SIGUSR2 = 1
+char Charachter_recieved = 0;
+
 void Signal_handler(int signum, siginfo_t *info, void *context)
 {
     static int Bits_recieved = 0;
-    static char Charachter_recieved = 0;
+
 
     (void)context;
-    Charachter_recieved = (Charachter_recieved << 1) | (signum == SIGUSR2);
-    Bits_recieved++;
+    if (signum == SIGUSR1)
+    {
+        Charachter_recieved = (Charachter_recieved << 1);
+        Bits_recieved++;
+    }
+    else if (signum == SIGUSR2)
+    {
+        Charachter_recieved = (Charachter_recieved << 1) | 1;
+        Bits_recieved++;
+    }
     if (Bits_recieved == 8)
     {
         if (Charachter_recieved == '\0')
-        {
             kill(info->si_pid, SIGUSR2);
-        }
         ft_putstr_fd(&Charachter_recieved, 1);
         Bits_recieved = 0;
         Charachter_recieved = 0;
