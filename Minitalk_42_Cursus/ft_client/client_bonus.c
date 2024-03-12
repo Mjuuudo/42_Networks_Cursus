@@ -12,7 +12,7 @@ void Signal_Sender(pid_t Target_Process_id, char Charecter_To_Be_Sent)
     Bits_Sended = 7;
     while (Bits_Sended >= 0)
     {
-		usleep(200);
+		
         if (((Charecter_To_Be_Sent >> Bits_Sended) & 1))
 		{
 			if (kill(Target_Process_id, SIGUSR2) == -1)
@@ -24,6 +24,7 @@ void Signal_Sender(pid_t Target_Process_id, char Charecter_To_Be_Sent)
 				exit (1);
 		}
         Bits_Sended--;
+        usleep(400);
     }
 }
 

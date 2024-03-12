@@ -7,7 +7,6 @@ void Signal_handler(int signum, siginfo_t *info, void *context)
 {
     static int Bits_recieved = 0;
 
-
     (void)context;
     if (signum == SIGUSR1)
     {
@@ -39,7 +38,6 @@ int main(int argc, char **argv)
     ft_putstr_fd("Hello ! The Process Id For THis Program Is : ", 1);
     ft_putnbr_fd(Process_Id, 1);
     ft_putchar_fd('\n',1);
-	
     sigemptyset(&sig.sa_mask);
     sig.sa_sigaction = &Signal_handler;
     sig.sa_flags = SA_SIGINFO;
