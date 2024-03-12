@@ -24,7 +24,7 @@ void Signal_Sender(pid_t Target_Process_id, char Charecter_To_Be_Sent)
 				exit (1);
 		}
         Bits_Sended--;
-        usleep(400);
+        usleep(500);
     }
 }
 
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
         Compteur++;
     }
     Signal_Sender(Target_Process_Id, '\0');
-    usleep(150);
+    usleep(400);
     return (0);
 }
 
