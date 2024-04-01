@@ -1,0 +1,4 @@
+#!/bin/bash
+git add .
+git commit -m "Push swap under constraction"
+git push
