@@ -1,4 +1,4 @@
-#include "../Push_swap.h"
+#include "../push_swap.h"
 
 static int  count_word(const char* string, char sep)
 {

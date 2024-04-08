@@ -1,7 +1,7 @@
-#include "../Push_swap.h"
+#include "../push_swap.h"
 
 
-long	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
 	long	number;
     int i;
