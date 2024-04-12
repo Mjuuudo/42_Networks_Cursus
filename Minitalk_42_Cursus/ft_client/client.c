@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 11:15:21 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/03/13 11:19:04 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/12 18:33:47 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int main(int argc, char *argv[])
 
     if (argc != 3)
     {
-        printf(stderr, "Usage: %s <Target_PID> <Message>\n", argv[0]);
+        ft_putstr_fd("Please CHeck if the amount of argument entred is Correct \n", 1);
+        ft_putstr_fd("Syntaxe : ./client <Target PID> <Message> \n", 1);
         return 1;
     }
 
