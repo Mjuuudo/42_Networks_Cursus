@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:57:39 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/08 16:14:57 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:18:32 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void sa(linked_list **head)
     linked_list *next;
     linked_list *temp;
     linked_list *last;
-
+    
+    if (ft_linkedlength(*head) == 1 || head == NULL)
+        return ;
     current = *head;
     next = current->next;
     last = next->next;

@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:41:50 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/08 16:15:34 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/12 18:29:00 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,27 @@ void  ft_freeheapargv(char **argv);
 void ft_freelinkedlist(linked_list **head);
 int ft_checkrepetition(linked_list *head, int number);
 
-// Sorting Fucntion
+// Manipulation  Fucntion
 
-int  ft_issorted(linked_list **head);
 void sa(linked_list **head);
 void sb(linked_list **head);
 void ss(linked_list **head);
+void ft_push_opperation(linked_list **destination, linked_list **source);
+void pa(linked_list **head, linked_list **head_target);
+void pb(linked_list **head, linked_list **head_target);
+void ft_rotation_stack(linked_list **head);
+void ra(linked_list **head);
+void rb(linked_list **head);
+void  ft_reverse_rotation_stack(linked_list **head);
+void rra(linked_list *head);
+void rrb(linked_list *head);
+void rrr(linked_list **head, linked_list **head_2);
+
+
+//  Sorting Function
+
+int  ft_issorted(linked_list **head);
+
+// Initialisation Function
 
 #endif
