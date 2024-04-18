@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:22:40 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/12 18:28:28 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:12:07 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void  ft_reverse_rotation_stack(linked_list **head)
     linked_list *target;
     linked_list *last_node;
 
-    if (!last_node)
+    if (*head == NULL)
         return ;
     last_node = ft_addnode(*head);
     last_node->prev->next = NULL;
     last_node->next = (*head);
     last_node->prev = NULL;
     (*head) = last_node;
+    last_node->next->prev = last_node;
 
 }
 void rra(linked_list *head)

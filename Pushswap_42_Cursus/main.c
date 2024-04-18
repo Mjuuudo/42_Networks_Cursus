@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 19:49:06 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/08 20:07:29 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:27:36 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main(int argc, char **argv)
         flag_heapornot = 1;
     } 
     ft_stackinit(&a, argv + 1, flag_heapornot);
+    
     if (!ft_issorted(&a))
     {
         if (ft_linkedlength(a) == 2)

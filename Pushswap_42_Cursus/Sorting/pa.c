@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:18:04 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/12 17:17:09 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/13 13:01:15 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void ft_push_opperation(linked_list **destination, linked_list **source)
 {
     linked_list *target_node;
 
-    if (!(*source))
+    if (*source == NULL)
         return ;
     target_node = *source;
     *source = (*source)->next;
-    if (*src)
+    if (*source)
         (*source)->prev = NULL;
     if((*destination) == NULL)
     {

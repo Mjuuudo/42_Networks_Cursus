@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:41:50 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/12 18:29:00 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:42:38 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <unistd.h>
+#include <string.h>
 
 
 // Linked List (The stack) Nodes Representation
@@ -41,11 +42,14 @@ void	ft_putchar(char c);
 void	ft_putstr(char *s);
 char	**ft_split(char const *s, char c);
 
+
 // Linked list Handler Functions
 
 void ft_addnode(linked_list **head, int data);
 linked_list *ft_lastnode(linked_list *head);
 int ft_linkedlength(linked_list *head);
+linked_list *find_highest(linked_list *head);
+linked_list *find_smallest(linked_list *head);
 
 // Error Handling Functions
 
@@ -75,7 +79,11 @@ void rrr(linked_list **head, linked_list **head_2);
 //  Sorting Function
 
 int  ft_issorted(linked_list **head);
+void ft_sort_three_nodes(linked_list **head);
 
 // Initialisation Function
+
+void  set_current_position(linked_list *head);
+void  set_mediane_situation(linked_list *head);
 
 #endif
