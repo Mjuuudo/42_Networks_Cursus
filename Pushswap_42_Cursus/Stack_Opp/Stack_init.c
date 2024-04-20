@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:00:29 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/15 19:49:20 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/20 13:30:24 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,29 @@ void  set_mediane_situation(linked_list *head)
 
 void set_target_node(linked_list *head, linked_list *head_2)
 {
-    
+    linked_list *temp;
+    linked_list *target_node;
+    long         last_mini_value;
+
+    last_mini_value = LONG_MAX;
+    while (head)
+    {
+        temp = head;
+        while (head_2)
+        {
+            if (temp->data < head_2->data && temp->data > last_mini_value)
+            {
+                last_mini_value = head_2->data;
+                target_node = temp;
+            }
+            head = head->next; 
+        }
+        if (last_mini_value == LONG_MAX)
+            head_2->target_node = find_smallest(head);
+        else 
+            head_2->target_node = target_node;
+        head_2 = head_2->next;
+    }
 }
 
 void set_push_price(linked_list *head, linked_list *head_2)
@@ -66,4 +88,22 @@ void set_push_price(linked_list *head, linked_list *head_2)
             head->push_price = (stack_length_1 - head->current_position);
         
     }
+}
+
+void set_cheapest_one(linked_list *head)
+{
+    linked_list *target_node;
+    long         bestfit_value;
+
+    bestfit_value = LONG_MAX;
+    while (head)
+    {
+        if (head->push_price < bestfit_value)
+        {
+            bestfit_value = push_price;
+            target_node = head;
+        }
+        head = head->next;
+    }
+    target_node->cheapest = 1;
 }

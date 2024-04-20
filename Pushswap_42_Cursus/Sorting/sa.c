@@ -6,10 +6,11 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:57:39 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/12 17:18:32 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/20 18:13:03 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../push_swap.h"
 
 void sa(linked_list **head)
 {

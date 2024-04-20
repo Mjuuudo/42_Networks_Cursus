@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:27:38 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/13 13:05:41 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/20 14:04:21 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,11 @@ void rb(linked_list **head)
 {
     ft_rotation_stack(*head);
 }
+void rr(linked_list **head, linked_list **head_2)
+{
+    ft_rotation_stack(*head);
+    ft_rotation_stack(*head_2);
+}
+
+
 

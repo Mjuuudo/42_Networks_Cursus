@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 17:54:01 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/08 14:07:16 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/04/20 18:11:25 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void  ft_freeheapargv(char **argv)
 
 void ft_freeerrors(linked_list **head, char **argv, int flag_heapornot)
 {
-    ft_freelinkedlist(a);
+    ft_freelinkedlist(head);
     if (flag_heapornot)
         ft_freeheapargv(argv);
     ft_putstr("Error\n");
