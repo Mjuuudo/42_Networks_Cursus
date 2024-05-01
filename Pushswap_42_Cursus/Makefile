@@ -5,36 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/09 20:03:25 by abait-ou          #+#    #+#              #
-#    Updated: 2024/04/20 18:10:27 by abait-ou         ###   ########.fr        #
+#    Created: 2024/04/29 13:58:28 by abait-ou          #+#    #+#              #
+#    Updated: 2024/04/30 13:05:49 by abait-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-FLAGS		= -Wall -Werror -Wextra
-COMPILER 	= CC
+SRCS		=   /push_swap.c /Outils/ft_atol.c /Stack_init/ft_stack_init.c /Outils/ft_split.c /Commandes/ft_swap.c 
+					 /Outils/ft_putstr.c /Commandes/ft_rotate.c /Commandes/ft_reverse_rotate.c /Commandes/ft_push_opperation.c 
+					 /Sorting/ft_sorting.c /Sorting/ft_pushingfrom_a_to_b.c  /Stack_init/ft_structinit.c  /Sorting/ft_move_nodes.c 
+					 /Sorting/ft_pushingfrom_b_to_a.c /Stack_init/ft_structinit_2.c /Errors_handling/Errors_handling.c
 NAME		= push_swap
-
-SRCS 		=  ./Error_handling/errors_handling.c  ./Outils/ft_atol.c  ./Outils/ft_putnbr.c 
-				./Outils/ft_putstr	./Outils/ft_split.c ./Sorting/Check_Sort.c ./Sorting/pa.c 
-				./Sorting/sa.c ./sorting/sorting_2.c ./sorting/push_swap.c ./sorting/rotation.c 
-				./sorting/reverse_rotation.c ./sorting/sorting.c 
-				./Stack_Opp/stack_opp.c ./Stack_Opp/stack_init.c ./Stack_Outils/linked_list_outils.c 
 OBJS		= $(SRCS:.c=.o)
-LIB			= push_swap.a
-MAKELIB 	=  ar -rcs
-all:		$(NAME)
+COMPILER	=	gcc
+# FLAGS		=	-Wall -Werror -Wextra
+
+
+RM 			= rm -f
+
+all :			$(NAME)
+	$(NAME):	$(OBJS)
+		$(COMPILER) $(OBJS) -o $(NAME)
+clean : 
+		$(RM) $(OBJS)
+fclean :
+		$(RM) $(NAME)
+re :	fclean all
 	
-$(NAME) : $(LIB)
-		$(COMPILER) $< -o $@
-
-$(LIB)  :  $(OBJS)
-		$(MAKELIB) $(LIB) $^
-%c.%o   :
-		$(COMPILER) $(FLAGS) -c $< -o $@
-
-clean 	:
-		rm $(OBJS) $(LIB)
-re		:
-		clean all
-.PHONY	: all clean   re

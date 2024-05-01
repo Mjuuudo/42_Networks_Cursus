@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   ft_sorting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 13:16:37 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/20 13:37:11 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/04/25 15:13:05 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/04/26 21:25:53 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-linked_list *find_highest(linked_list *head)
+p_stackliste *find_highest(p_stackliste *head)
 {
-    linked_list *highest_one;
+    p_stackliste *highest_one;
     int          high_value;
 
     if (head == NULL)
@@ -32,9 +32,9 @@ linked_list *find_highest(linked_list *head)
     return (highest_one);
 }
 
-linked_list *find_smallest(linked_list *head)
+p_stackliste *find_smallest(p_stackliste *head)
 {
-    linked_list *smallest_one;
+    p_stackliste *smallest_one;
     long          smallest_value;
 
     smallest_value = LONG_MAX;
@@ -51,30 +51,24 @@ linked_list *find_smallest(linked_list *head)
     
 }
 
-void ft_sort_three_nodes(linked_list **head)
+void ft_sorththree(p_stackliste **stack)
 {
-    linked_list *highest_one;
-
-    highest_one = find_highest(*head);
-    if (*head == highest_one)
-        ra(head);
-    else if ((*head)->next == highest_one)
-        rra(head);
-    if ((*head)->data > (*head)->next->data)
-        sa(head);
+    if ((*stack) == find_highest(*stack))
+        ra(stack);
+    else if ((*stack)->next == find_highest(*stack))
+        rra(stack);
+    if ((*stack)->data > (*stack)->next->data)
+        sa(stack);
 }
 
-linked_list *ft_returncheapest(linked_list *head)
+void push_swap(p_stackliste **stack_a, p_stackliste **stack_b)
 {
-    linked_list *cheapest;
-
-    while (head)
-    {
-        if (head->cheapest = 1)
-        {
-            cheapest = head;
-        }
-        head = head -> next; 
-    }
-    return (cheapest);
+    push_swap_a(stack_a, stack_b);
+    set_current_position(*stack_a);
+    set_current_position(*stack_b);
+    set_mediane_situation(*stack_a);
+    set_mediane_situation(*stack_b);
+    set_default(*stack_b);
+    push_swap_b(stack_a, stack_b);
 }
+

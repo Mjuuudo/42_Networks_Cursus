@@ -1,122 +1,189 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/25 13:11:16 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/04/26 21:17:45 by abait-ou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-static int  count_word(const char* string, char sep)
-{
-  int words = 0;
-  int compteur = 0;
+// static int  count_word(const char* string, char sep)
+// {
+//   int words = 0;
+//   int compteur = 0;
 
-  if (!string || string[0] == '\0')
-      return (words);
-  while (string[compteur])
-  {
-    if (string[compteur] == sep)
-    {
-      compteur++;
-      words++;
-      while (string[compteur] == sep)
-          compteur++;
-    }
-    else
-      compteur++;
-  }
-  if (string[compteur] == '\0')
-      words++;
-  return (words);
-}
-
-static int check_spaces(const char *s, char c, int index)
-{
-  int compteur;
-
-  compteur = index;
-  while (s[compteur] == c)
-  {
-    compteur++;
-  }
-  return (compteur);
-}
-
-static char    *ft_substr(char const *s, unsigned int start, int len)
-{
-    unsigned int    index;
-    char            *res;
-
-    res = malloc(sizeof(char) * (len + 1));
-    if (!res || !s)
-        return (NULL);
-    index = 0;
-    while (start < strlen((char *)s) && s[start + index] && index < len)
-    {
-        res[index] = s[start + index];
-        index++;
-    }
-    res[index] = '\0';
-    return (res);
-}
-
-static char *get_next_word(const char *s, char c)
-{
-  static int index_start = 0;
-  static int index_end = 0;
-  char*      sub_string;
-
-  index_end = check_spaces(s, c, index_end);
-  index_start = check_spaces(s, c, index_end);
-  while (s[index_end] != c && s[index_end])
-          index_end++;
-  sub_string = (char *)malloc(sizeof(char) * (index_end - index_start) + 1);
-  if (!sub_string)
-      return (free(sub_string), NULL);
-  sub_string = ft_substr(s, index_start, (index_end - index_start));
-  index_end = check_spaces(s, c, index_end);
-  index_start = index_end;
-  return (sub_string);
-}
-
-char	**ft_split(char const *s, char c)
-{
-  char **new_array;
-  int     compteur;
-  int      rows;
-
-  compteur = 0;
-  if (!s && !c)
-    return (NULL); 
-  rows = count_word(s, c);
-  new_array = (char **)malloc((rows + 1)  * sizeof(char *));
-  if (!new_array)
-      return (free(new_array), NULL);
-  while (compteur < rows)
-  {
-    new_array[compteur++] = get_next_word(s, c);
-    if (!new_array[compteur - 1]) 
-    {// Free previously allocated memory if get_next_word fails
-            while (--compteur >= 0)
-                free(new_array[compteur]);
-            free(new_array);
-            return (NULL);
-    }
-  }
-  new_array[compteur] = NULL;
-  return (new_array);
-}
-
-// int main(int argc, char **argv) {
-
-//   char **str1;
-//   int i = 0;
-  
-//   str1 = ft_split(argv[1], ' ');
-
-//   while (str1[i])
+//   if (!string || string[0] == '\0')
+//       return (words);
+//   while (string[compteur])
 //   {
-//     printf("%s  ", str1[i]);
-//     free(str1[i]);
-//     i++;
+//     if (string[compteur] == sep)
+//     {
+//       compteur++;
+//       words++;
+//       while (string[compteur] == sep)
+//           compteur++;
+//     }
+//     else
+//       compteur++;
 //   }
-//   printf ("\n");
-  
-//   return 0;
+//   if (string[compteur] == '\0')
+//       words++;
+//   return (words);
 // }
 
+// static int check_spaces(const char *s, char c, int index)
+// {
+//   int compteur;
 
+//   compteur = index;
+//   while (s[compteur] == c)
+//   {
+//     compteur++;
+//   }
+//   return (compteur);
+// }
+
+// static char    *ft_substr(char const *s, unsigned int start, int len)
+// {
+//     unsigned int    index;
+//     char            *res;
+
+//     res = malloc(sizeof(char) * (len + 1));
+//     if (!res || !s)
+//         return (NULL);
+//     index = 0;
+//     while (start < strlen((char *)s) && s[start + index] && index < len)
+//     {
+//         res[index] = s[start + index];
+//         index++;
+//     }
+//     res[index] = '\0';
+//     return (res);
+// }
+
+// static char *get_next_word(const char *s, char c)
+// {
+//   static int index_start = 0;
+//   static int index_end = 0;
+//   char*      sub_string;
+
+//   index_end = check_spaces(s, c, index_end);
+//   index_start = check_spaces(s, c, index_end);
+//   while (s[index_end] != c && s[index_end])
+//           index_end++;
+//   sub_string = (char *)malloc(sizeof(char) * (index_end - index_start) + 1);
+//   if (!sub_string)
+//       return (free(sub_string), NULL);
+//   sub_string = ft_substr(s, index_start, (index_end - index_start));
+//   index_end = check_spaces(s, c, index_end);
+//   index_start = index_end;
+//   return (sub_string);
+// }
+
+// char	**ft_split(char const *s, char c)
+// {
+//   char **new_array;
+//   int     compteur;
+//   int      rows;
+
+//   compteur = 0;
+//   if (!s && !c)
+//     return (NULL); 
+//   rows = count_word(s, c);
+//   new_array = (char **)malloc((rows + 1)  * sizeof(char *));
+//   if (!new_array)
+//       return (free(new_array), NULL);
+//   while (compteur < rows)
+//   {
+//     new_array[compteur++] = get_next_word(s, c);
+//     if (!new_array[compteur - 1]) 
+//     {// Free previously allocated memory if get_next_word fails
+//             while (--compteur >= 0)
+//                 free(new_array[compteur]);
+//             free(new_array);
+//             return (NULL);
+//     }
+//   }
+//   new_array[compteur] = NULL;
+//   return (new_array);
+// }
+
+static int	count_words(char *s, char c) //Define a function that returns the substrings count in a string seperated by a delimiter
+{
+	int		count; //To store the substring count
+	bool	inside_word; //A flag to indicate whether we are inside a substring or a delimeter
+
+	count = 0;
+	while (*s) //Loop until the end of the string is reached
+	{
+		inside_word = false; //Set the bool to false to start the loop
+		while (*s == c) //While the current character is the delimeter
+			++s; //Move to the next character
+		while (*s != c && *s) //While the current character is not a deilimeter and the end of the string is not reached, 
+		{
+			if (!inside_word) //If we are not currently inside the substring
+			{
+				++count; //Increment the count as we are about to move inside a substring
+				inside_word = true; //Set the bool to true, indicating we've found a substring
+			}
+			++s; //Move to the next character of the string
+		}
+	}
+	return (count);
+}
+
+static char	*get_next_word(char *s, char c) //Define a function that returns the new substring found within a string
+{
+	static int	cursor = 0; //To keep track of the position within the string `s` across multiple function calls, needed to continue processing the string from where we left off in previous calls, essential for tokenizing a string
+	char		*next_word; //To store a pointer of the new substring
+	int			len; //To store the length of the substring being extracted
+	int			i; //Used for indexing characters in the new substring
+
+	len = 0;
+	i = 0;
+	while (s[cursor] == c) //Skip past any consecutive delimiter characters at the current position in the string
+		++cursor;
+	while ((s[cursor + len] != c) && s[cursor + len]) //Calculate the length of the substring by counting characters until either a delimiter or the end of the string is encountered
+		++len;
+	next_word = malloc((size_t)len * sizeof(char) + 1); //Allocate memory for new substring based on its length plus one byte for the null terminator
+	if (!next_word) //Check for unsuccessful memory allocation
+		return (NULL);
+	while ((s[cursor] != c) && s[cursor]) //Loop until a delimeter is encountered and the end of the string is reached
+		next_word[i++] = s[cursor++]; //Copy each character from the string to the new substring and increment `i` and `cursor` after each character
+	next_word[i] = '\0'; //Properly null terminate the newly created substring
+	return (next_word);
+}
+
+char **ft_split(char *s, char c) //Define a function that returns the substrings in a string seperated by a delimiter
+{
+	int		words_count; //Used to keep track of the number of substrings in the string
+	char	**result_array; //To store a pointer to pointers, the array of all the substrings
+	int		i; //Used to iterate through the array
+
+	i = 0;
+	words_count = count_words(s, c);
+	if (!words_count) //Check for `0` words
+		exit(1);
+	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2)); //Allocate memory for the result_array based on the number of words (words_count) plus two additional slots to account for the null terminator at the end of the last string, and to null terminate the entire array
+	if (!result_array) //Check for unsuccessful memory allocation
+		return (NULL);
+	while (words_count-- >= 0) //Iterates through the words to be split all words have been processed
+	{
+		if (i == 0) //Check if the first character of the input string is the delimiter
+		{
+			result_array[i] = malloc(sizeof(char)); //Allocate memory for an empty string (a single null terminator)
+			if (!result_array[i]) ////Check for unsuccessful memory allocation
+				return (NULL);
+			result_array[i++][0] = '\0'; //Include in the result array as distinct elements
+			continue ;
+		}
+		result_array[i++] = get_next_word(s, c); //If the first character of the string is not a delimeter, extract the substring and copy it into the result array
+	}
+	result_array[i] = NULL; //Properly null terminate the array
+	return (result_array);
+}

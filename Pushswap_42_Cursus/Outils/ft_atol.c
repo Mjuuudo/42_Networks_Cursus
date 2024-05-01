@@ -1,5 +1,17 @@
-#include "../push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/25 13:34:09 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/04/25 13:41:11 by abait-ou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+
+#include "../push_swap.h"
 
 long	ft_atol(const char *str)
 {
@@ -18,7 +30,7 @@ long	ft_atol(const char *str)
 		i++;
 	}
 	number = 0;
-	while (ft_isdigit(str[i]))
+	while (isdigit(str[i]))
 	{
 		number *= 10;
 		number = str[i] - 48 + number;

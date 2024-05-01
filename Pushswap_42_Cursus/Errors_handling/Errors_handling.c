@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handling.c                                  :+:      :+:    :+:   */
+/*   Errors_handling.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 17:54:01 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/20 18:11:25 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/04/26 20:14:04 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/04/26 21:09:41 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-
-int ft_checkrepetition(linked_list *head, int number)
+int ft_checkrepetition(p_stackliste *head, int number)
 {
 
     while (head)
@@ -25,10 +24,10 @@ int ft_checkrepetition(linked_list *head, int number)
     return (0);
 }
 
-void ft_freelinkedlist(linked_list **head)
+void ft_freelinkedlist(p_stackliste **head)
 {
-    linked_list *temp;
-    linked_list *current;
+    p_stackliste *temp;
+    p_stackliste *current;
 
     if (head == NULL)
         return ;
@@ -42,12 +41,11 @@ void ft_freelinkedlist(linked_list **head)
     *head = NULL;
     
 }
-
 void  ft_freeheapargv(char **argv)
 {
     int compteur;
 
-    compteur = -1;
+    compteur = 0;
     if (argv == NULL || *argv == NULL)
         return ;
     while (argv[compteur])
@@ -55,10 +53,10 @@ void  ft_freeheapargv(char **argv)
         free(argv[compteur]);
         compteur++;
     }
-    free(argv - 1);
+    free(argv);
 }
 
-void ft_freeerrors(linked_list **head, char **argv, int flag_heapornot)
+void ft_freeerrors(p_stackliste **head, char **argv, int flag_heapornot)
 {
     ft_freelinkedlist(head);
     if (flag_heapornot)

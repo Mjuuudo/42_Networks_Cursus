@@ -5,92 +5,121 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 15:41:50 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/20 14:30:15 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/04/25 13:02:15 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/04/27 11:54:49 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 #include <unistd.h>
+#include <limits.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdbool.h>
 
+// the split function is using a forbiden fucntion  check it when finish
+// also atol
+// case to resolve in ft split "   4   2         15" the problem is when we have spaces at the beginnig only
 
-// Linked List (The stack) Nodes Representation
-
-typedef struct linked_list{
+typedef struct p_stackliste{
     int     data;
     int     current_position;
-    int     push_price;
     int     above_mediane;
+    int     push_price;
     int     cheapest;
-    struct linked_list *target_node;
-    struct linked_list *prev;
-    struct linked_list *next;
-}               linked_list;
+    struct p_stackliste *target_node;
+    struct p_stackliste *next;
+    struct p_stackliste *prev;
+}               p_stackliste;
 
-// Outils Used To Manupilate The Stacks And Translate Data
+// Outils Used In Our Main Function Of Push swap
 
+char	**ft_split(char  *s, char c);
 long	ft_atol(const char *str);
-void	ft_putnbr(int n);
-void	ft_putchar(char c);
 void	ft_putstr(char *s);
-char	**ft_split(char const *s, char c);
+void	ft_putstr(char *s);
+
+// Stack Creation Functions
+
+void ft_stack_init(p_stackliste **stack, char **argv, int flag_heapornpot);
+void  ft_addnode(p_stackliste **stack_a, int data);
+p_stackliste *ft_getlastnode(p_stackliste *stack);
+
+// Stack Checking functions 
+
+int ft_checksorted(p_stackliste *stack_a);
+int ft_stacklength(p_stackliste *stack_a);
+
+// Commandes
+
+void ft_swap(p_stackliste **stack);
+void sa(p_stackliste **stack);
+void sb(p_stackliste **stack);
+void ss(p_stackliste **stack_a, p_stackliste **stack_b);
+void ft_rotate(p_stackliste **stack);
+void ra(p_stackliste **stack);
+void rb(p_stackliste **stack);
+void rr(p_stackliste **stack_a, p_stackliste **stack_b);
+void ft_reverse_rotate(p_stackliste **stack);
+void rra(p_stackliste **stack);
+void rrb(p_stackliste **stack);
+void rrr(p_stackliste **stack_a, p_stackliste **stack_b);
+void ft_push_opperation(p_stackliste **destination, p_stackliste **source);
+void pa(p_stackliste **stack_a, p_stackliste **stack_b);
+void pb(p_stackliste **stack_a, p_stackliste **stack_b);
 
 
-// Linked list Handler Functions
+// Sorting Functions
 
-void ft_addnode(linked_list **head, int data);
-linked_list *ft_lastnode(linked_list *head);
-int ft_linkedlength(linked_list *head);
-linked_list *find_highest(linked_list *head);
-linked_list *find_smallest(linked_list *head);
-linked_list *ft_returncheapest(linked_list *head);
+void ft_sorththree(p_stackliste **stack);
+p_stackliste *find_highest(p_stackliste *head);
+p_stackliste *find_smallest(p_stackliste *head);
+void push_swap(p_stackliste **stack_a, p_stackliste **stack_b);
 
-// Error Handling Functions
+// Stack Initialization
 
-void ft_freeerrors(linked_list **head, char **argv, int flag_heapornot);
-int syntaxe_error(const char *string);
+void  set_current_position(p_stackliste *head);
+void  set_mediane_situation(p_stackliste *head);
+void  set_push_price(p_stackliste *head, p_stackliste *head_2);
+void  set_cheapest_one(p_stackliste *head);
+void  set_push_price_from_b(p_stackliste *stack_a, p_stackliste *stack_b);
+
+// Pushing from a to b functions
+
+void push_swap_a(p_stackliste **stack_a, p_stackliste **stack_b);
+void ft_target_nodefor_a(p_stackliste *stack_a, p_stackliste *stack_b);
+void ft_initnodefor_a(p_stackliste *stack_a, p_stackliste *stack_b);
+void set_cheapest_one(p_stackliste *head);
+p_stackliste *ft_returncheapest(p_stackliste *head);
+
+// Sorintg Movements
+
+void rotate_both(p_stackliste **stack_a, p_stackliste **stack_b, p_stackliste *cheapest_node);
+void reverse_rotate_both(p_stackliste **stack_a, p_stackliste **stack_b, p_stackliste *cheapest_node);
+void	finish_rotation(p_stackliste **stack, p_stackliste *top_node, char stack_name);
+void rotate_both_b_to_a(p_stackliste **head, p_stackliste **head_2, p_stackliste *cheapest_node);
+void reverse_rotate_both_b_to_a(p_stackliste **head, p_stackliste **head_2, p_stackliste *cheapest_node);
+
+// Pushing from b to a funcrions
+
+void  push_swap_b(p_stackliste **stack_a, p_stackliste **stack_b);
+void ft_move_nodesfrom_b_to_a(p_stackliste **stack_a, p_stackliste **stack_b);
+void ft_target_nodefor_b(p_stackliste *stack_a, p_stackliste *stack_b);
+void ft_initnodefor_b(p_stackliste *stack_a, p_stackliste *stack_b);
+void set_default(p_stackliste *head);
+
+//Errors handling functions
+
+int ft_checkrepetition(p_stackliste *head, int number);
+void ft_freelinkedlist(p_stackliste **head);
 void  ft_freeheapargv(char **argv);
-void ft_freelinkedlist(linked_list **head);
-int ft_checkrepetition(linked_list *head, int number);
+void ft_freeerrors(p_stackliste **head, char **argv, int flag_heapornot);
+int syntaxe_error(const char *string);
+void ft_deppanage(p_stackliste **stack, p_stackliste *top_node);
 
-// Manipulation  Fucntion
-
-void sa(linked_list **head);
-void sb(linked_list **head);
-void ss(linked_list **head);
-void ft_push_opperation(linked_list **destination, linked_list **source);
-void pa(linked_list **head, linked_list **head_target);
-void pb(linked_list **head, linked_list **head_target);
-void ft_rotation_stack(linked_list **head);
-void ra(linked_list **head);
-void rb(linked_list **head);
-void rr(linked_list **head, linked_list **head_2);
-void  ft_reverse_rotation_stack(linked_list **head);
-void rra(linked_list *head);
-void rrb(linked_list *head);
-void rrr(linked_list **head, linked_list **head_2);
-
-
-//  Sorting Function
-
-int  ft_issorted(linked_list **head);
-void ft_sort_three_nodes(linked_list **head);
-void    finish_rotation(linked_list **head, linked_list **top_node, char stack_name);
-void ft_movenode(linked_list **head, linked_list **head_2);
-void push_swap(linked_list **head, linked_list **head_2);
-// Initialisation Function
-
-void  set_current_position(linked_list *head);
-void  set_mediane_situation(linked_list *head);
-void  set_target_node(linked_list *head, linked_list *head_2);
-void set_push_price(linked_list *head, linked_list *head_2);
-void set_cheapest_one(linked_list *head);
-void ft_initialisation(linked_list **head, linked_list **head_2);
 #endif
