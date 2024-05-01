@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:21:20 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/28 14:06:47 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:04:20 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void ft_stack_init(p_stackliste **stack, char **argv, int flag_heapornpot)
             ft_freeerrors(stack, argv, flag_heapornpot);
         ft_addnode(stack, (int)number);
     }
+    // printf("stack length : %d\n", ft_stacklength(*stack)); 
     if (flag_heapornpot)
         ft_freeheapargv(argv);
     

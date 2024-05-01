@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:02:15 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/27 11:54:49 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:56:05 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct p_stackliste{
 
 // Outils Used In Our Main Function Of Push swap
 
-char	**ft_split(char  *s, char c);
+char	**ft_split(char const *s, char c);
 long	ft_atol(const char *str);
 void	ft_putstr(char *s);
 void	ft_putstr(char *s);

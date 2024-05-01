@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 20:28:50 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/27 12:05:02 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/01 14:07:06 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void ft_initnodefor_b(p_stackliste *stack_a, p_stackliste *stack_b)
     set_mediane_situation(stack_a);
     set_mediane_situation(stack_b);
     ft_target_nodefor_b(stack_a, stack_b);
-    
     set_push_price(stack_b, stack_a);
     set_cheapest_one(stack_b);
 }
@@ -75,7 +74,8 @@ void ft_move_nodesfrom_b_to_a(p_stackliste **stack_a, p_stackliste **stack_b)
     else if (!(cheapest->above_mediane && cheapest->target_node->above_mediane))
         reverse_rotate_both(stack_b, stack_a, cheapest);
     finish_rotation(stack_b, cheapest, 'b');
-    ft_deppanage(stack_a, cheapest->target_node);
+    finish_rotation(stack_a, cheapest->target_node, 'a');
+    // ft_deppanage(stack_a, cheapest->target_node);
     pa(stack_a, stack_b);
 }
 

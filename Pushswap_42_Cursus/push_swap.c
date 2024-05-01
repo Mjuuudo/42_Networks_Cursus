@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:01:35 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/04/27 12:03:15 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:04:09 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ int main(int argc, char **argv)
     {
         argv = ft_split (argv[1], ' ');
         flag_heapornpot = 1;
+        // int compteur = 0;
+        // while(argv[compteur + 1])
+        // {
+        //     printf("argv : %s\n", argv[compteur + 1]);
+        //     compteur++;
+        // }
+        // printf("arg  solde %d\n", compteur);
         ft_stack_init(&a, argv, flag_heapornpot);
     }
     else
@@ -41,13 +48,7 @@ int main(int argc, char **argv)
             ft_sorththree(&a);
         else
             push_swap(&a, &b);
-    }
-    // while (a)
-    // {
-    //     printf ("%d\n", a->data);
-    //     a = a->next;
-    // }
- 
+    } 
     ft_freelinkedlist(&a);
     return (0);
 }
