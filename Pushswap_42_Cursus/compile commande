@@ -1,2 +1,0 @@
-cc push_swap.c ./Outils/ft_atol.c Stack_init/ft_stack_init.c Outils/ft_split.c ./Commandes/ft_swap.c ./Outils/ft_putstr.c ./Commandes/ft_rotate.c ./Commandes/ft_reverse_rotate.c ./Commandes/ft_push_opperation.c ./Sorting/ft_sorting.c ./Sorting/ft_pushingfrom_a_to_b.c  ./Stack_init/ft_structinit.c  ./Sorting/ft_move_nodes.c ./Sorting/ft_pushingfrom_b_to_a.c ./Stack_init/ft_structinit_2.c
-./Errors_handling/Errors_handling.c
