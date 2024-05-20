@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:48:05 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/09 20:48:32 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:17:02 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 long long	ft_atol(const char *str)
 {
 	long long	number;
-    int i;
-	int	sign;
+	int			i;
+	int			sign;
 
 	i = 0;
 	while (str[i] == 32 || (str[i] <= 13 && str[i] >= 9))
@@ -36,5 +36,4 @@ long long	ft_atol(const char *str)
 		i++;
 	}
 	return (number * sign);
-    
 }

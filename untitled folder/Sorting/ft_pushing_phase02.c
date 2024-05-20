@@ -6,18 +6,16 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:35:41 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/18 18:28:28 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:12:54 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../push_swap.h"
 
-
-void	prep_for_push(stack_list **stack, stack_list *top_node,  char stack_name) 
+void	prep_for_push(stack_list **stack, stack_list *top_node, char stack_name)
 {
-	while (*stack != top_node) 
-    {
+	while (*stack != top_node)
+	{
 		if (stack_name == 'a')
 		{
 			if (top_node->above_mediane)
@@ -31,7 +29,7 @@ void	prep_for_push(stack_list **stack, stack_list *top_node,  char stack_name)
 				rb(stack);
 			else
 				rrb(stack);
-		}	
+		}
 	}
 }
 
@@ -48,49 +46,48 @@ stack_list	*ft_get_cheapest(stack_list *stack)
 	return (NULL);
 }
 
-static void	set_target_b(stack_list *a, stack_list *b) 
+static void	set_target_b(stack_list *a, stack_list *b)
 {
-	stack_list	*current_a; 
-	stack_list	*target_node; 
-	long			best_match_index; 
+	stack_list	*current_a;
+	stack_list	*target_node;
+	long		best_match_index;
 
 	while (b)
 	{
-		best_match_index = LONG_MAX; 
-		current_a = a; 
-		while (current_a) 
+		best_match_index = LONG_MAX;
+		current_a = a;
+		while (current_a)
 		{
-			if (current_a->data > b->data 
-				&& current_a->data < best_match_index) 
+			if (current_a->data > b->data && current_a->data < best_match_index)
 			{
-				best_match_index = current_a->data; 
-				target_node = current_a; 
+				best_match_index = current_a->data;
+				target_node = current_a;
 			}
 			current_a = current_a->next;
 		}
-		if (best_match_index == LONG_MAX) 
-			b->target_node = find_min(a); 
+		if (best_match_index == LONG_MAX)
+			b->target_node = find_min(a);
 		else
-			b->target_node = target_node; 
+			b->target_node = target_node;
 		b = b->next;
 	}
 }
 
-void	max_on_top(stack_list **b) 
+void	max_on_top(stack_list **b)
 {
-	stack_list *max;
+	stack_list	*max;
 
 	max = find_max(*b);
-	while ((*b)->data  != max->data) 
+	while ((*b)->data != max->data)
 	{
-		if (max->above_mediane) 
+		if (max->above_mediane)
 			rb(b);
 		else
 			rrb(b);
 	}
 }
 
-void	init_nodes_b(stack_list *a, stack_list *b) 
+void	init_nodes_b(stack_list *a, stack_list *b)
 {
 	current_index(a);
 	current_index(b);
