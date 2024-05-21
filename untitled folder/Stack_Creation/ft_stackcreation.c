@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:36:40 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:20:48 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:24:26 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,15 @@ void	ft_stack_init(stack_list **a, char **argv, int flag_heapornot)
 	long long	n;
 	int			i;
 
-	i = 0;
+	if (flag_heapornot == 1)
+		i = 0;
+	else
+		i = 1;
 	while (argv[i])
 	{
+		// stack_list *p;
+	
+		// p = a;
 		if (syntaxe_error(argv[i]))
 			ft_freeerrors(a, argv, flag_heapornot);
 		n = ft_atol(argv[i]);
@@ -91,6 +97,11 @@ void	ft_stack_init(stack_list **a, char **argv, int flag_heapornot)
 			ft_freeerrors(a, argv, flag_heapornot);
 		ft_addnode(a, (int)n);
 		i++;
+		// while (p)
+		// {
+		// printf("%d\n", p->data);
+		// p = p->next;
+		// }
 	}
 	if (flag_heapornot)
 		ft_freeheapargv(argv);

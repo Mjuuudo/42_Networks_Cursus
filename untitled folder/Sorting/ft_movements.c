@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:30:47 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:24:50 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:26:10 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ void	ft_push_swap(stack_list **a, stack_list **b)
 		init_nodes_a(*a, *b);
 		move_a_to_b(a, b);
 	}
-	max_on_top(b);
-	ft_sort_three(a);
-	while (*b)
-	{
-		current_index(*a);
-		current_index(*b);
-		init_nodes_b(*a, *b);
-		move_b_to_a(a, b);
-	}
-	current_index(*a);
-	min_on_top(a);
+	// max_on_top(b);
+	// ft_sort_three(a);
+	// while (*b)
+	// {
+	// 	current_index(*a);
+	// 	current_index(*b);
+	// 	init_nodes_b(*a, *b);
+	// 	move_b_to_a(a, b);
+	// }
+	// current_index(*a);
+	// min_on_top(a);
 }
