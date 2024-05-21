@@ -6,13 +6,13 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:24:49 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 10:25:32 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:09:04 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	avoid_norminette(stack_list **a, stack_list **b)
+static void	avoid_norminette(t_stack_list **a, t_stack_list **b)
 {
 	if (ft_checksorted(*a) == 0)
 	{
@@ -28,8 +28,8 @@ static void	avoid_norminette(stack_list **a, stack_list **b)
 
 int	main(int argc, char **argv)
 {
-	stack_list	*a;
-	stack_list	*b;
+	t_stack_list	*a;
+	t_stack_list	*b;
 	char		**s;
 
 	a = NULL;

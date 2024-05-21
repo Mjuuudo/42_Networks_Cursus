@@ -6,13 +6,13 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:49:12 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:19:45 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:06:17 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_checkrepetition(stack_list *head, int number)
+int	ft_checkrepetition(t_stack_list *head, int number)
 {
 	while (head)
 	{
@@ -23,10 +23,10 @@ int	ft_checkrepetition(stack_list *head, int number)
 	return (0);
 }
 
-void	ft_freelinkedlist(stack_list **head)
+void	ft_freelinkedlist(t_stack_list **head)
 {
-	stack_list	*temp;
-	stack_list	*current;
+	t_stack_list	*temp;
+	t_stack_list	*current;
 
 	if (head == NULL)
 		return ;
@@ -55,7 +55,7 @@ void	ft_freeheapargv(char **argv)
 	free(argv);
 }
 
-void	ft_freeerrors(stack_list **head, char **argv, int flag_heapornot)
+void	ft_freeerrors(t_stack_list **head, char **argv, int flag_heapornot)
 {
 	ft_freelinkedlist(head);
 	if (flag_heapornot)

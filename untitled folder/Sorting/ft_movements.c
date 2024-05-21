@@ -6,14 +6,14 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:30:47 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 12:02:23 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:07:07 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	rotate_both(stack_list **a, stack_list **b,
-		stack_list *cheapest_node)
+static void	rotate_both(t_stack_list **a, t_stack_list **b,
+		t_stack_list *cheapest_node)
 {
 	while (cheapest_node->target_node->current_position != 0
 		&& cheapest_node->current_position != 0)
@@ -24,8 +24,8 @@ static void	rotate_both(stack_list **a, stack_list **b,
 	}
 }
 
-static void	rev_rotate_both(stack_list **a, stack_list **b,
-		stack_list *cheapest_node)
+static void	rev_rotate_both(t_stack_list **a, t_stack_list **b,
+		t_stack_list *cheapest_node)
 {
 	while (cheapest_node->target_node->current_position != 0
 		&& cheapest_node->current_position != 0)
@@ -36,9 +36,9 @@ static void	rev_rotate_both(stack_list **a, stack_list **b,
 	}
 }
 
-static void	move_a_to_b(stack_list **a, stack_list **b)
+static void	move_a_to_b(t_stack_list **a, t_stack_list **b)
 {
-	stack_list	*cheapest_node;
+	t_stack_list	*cheapest_node;
 
 	cheapest_node = ft_calc_lessmoves(a);
 	if (cheapest_node->above_mediane == 1
@@ -52,13 +52,13 @@ static void	move_a_to_b(stack_list **a, stack_list **b)
 	pb(b, a);
 }
 
-static void	move_b_to_a(stack_list **a, stack_list **b)
+static void	move_b_to_a(t_stack_list **a, t_stack_list **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
 	pa(a, b);
 }
 
-void	ft_push_swap(stack_list **a, stack_list **b)
+void	ft_push_swap(t_stack_list **a, t_stack_list **b)
 {
 	int	len_a;
 

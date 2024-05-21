@@ -6,13 +6,13 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:36:40 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 10:24:26 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:08:38 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	ft_stacklength(stack_list *stack_a)
+int	ft_stacklength(t_stack_list *stack_a)
 {
 	int	compteur;
 
@@ -25,7 +25,7 @@ int	ft_stacklength(stack_list *stack_a)
 	return (compteur);
 }
 
-int	ft_checksorted(stack_list *stack_a)
+int	ft_checksorted(t_stack_list *stack_a)
 {
 	if (!stack_a)
 		return (1);
@@ -38,7 +38,7 @@ int	ft_checksorted(stack_list *stack_a)
 	return (1);
 }
 
-stack_list	*ft_getlastnode(stack_list *stack)
+t_stack_list	*ft_getlastnode(t_stack_list *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -49,14 +49,14 @@ stack_list	*ft_getlastnode(stack_list *stack)
 	return (stack);
 }
 
-void	ft_addnode(stack_list **stack, int data)
+void	ft_addnode(t_stack_list **stack, int data)
 {
-	stack_list	*node;
-	stack_list	*last_node;
+	t_stack_list	*node;
+	t_stack_list	*last_node;
 
 	if (!stack)
 		return ;
-	node = malloc(sizeof(stack_list));
+	node = malloc(sizeof(t_stack_list));
 	if (!node)
 		return ;
 	node->next = NULL;
@@ -74,7 +74,7 @@ void	ft_addnode(stack_list **stack, int data)
 	}
 }
 
-void	ft_stack_init(stack_list **a, char **argv, int flag_heapornot)
+void	ft_stack_init(t_stack_list **a, char **argv, int flag_heapornot)
 {
 	long long	n;
 	int			i;
@@ -85,9 +85,6 @@ void	ft_stack_init(stack_list **a, char **argv, int flag_heapornot)
 		i = 1;
 	while (argv[i])
 	{
-		// stack_list *p;
-	
-		// p = a;
 		if (syntaxe_error(argv[i]))
 			ft_freeerrors(a, argv, flag_heapornot);
 		n = ft_atol(argv[i]);
@@ -97,11 +94,6 @@ void	ft_stack_init(stack_list **a, char **argv, int flag_heapornot)
 			ft_freeerrors(a, argv, flag_heapornot);
 		ft_addnode(a, (int)n);
 		i++;
-		// while (p)
-		// {
-		// printf("%d\n", p->data);
-		// p = p->next;
-		// }
 	}
 	if (flag_heapornot)
 		ft_freeheapargv(argv);

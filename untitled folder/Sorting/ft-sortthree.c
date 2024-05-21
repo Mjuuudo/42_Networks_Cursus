@@ -6,15 +6,15 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:17:33 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:25:35 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:08:00 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_sort_three(stack_list **a)
+void	ft_sort_three(t_stack_list **a)
 {
-	stack_list	*biggest_node;
+	t_stack_list	*biggest_node;
 
 	biggest_node = find_max(*a);
 	if (biggest_node == *a)
@@ -25,10 +25,10 @@ void	ft_sort_three(stack_list **a)
 		sa(a);
 }
 
-stack_list	*find_min(stack_list *stack)
+t_stack_list	*find_min(t_stack_list *stack)
 {
 	long		min;
-	stack_list	*min_node;
+	t_stack_list	*min_node;
 
 	if (!stack)
 		return (NULL);
@@ -45,10 +45,10 @@ stack_list	*find_min(stack_list *stack)
 	return (min_node);
 }
 
-stack_list	*find_max(stack_list *stack)
+t_stack_list	*find_max(t_stack_list *stack)
 {
 	long		max;
-	stack_list	*max_node;
+	t_stack_list	*max_node;
 
 	if (!stack)
 		return (NULL);

@@ -6,15 +6,15 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:11:27 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:05:22 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	push(stack_list **dst, stack_list **src)
+static void	push(t_stack_list **dst, t_stack_list **src)
 {
-	stack_list	*push_node;
+	t_stack_list	*push_node;
 
 	if (!*src)
 		return ;
@@ -36,13 +36,13 @@ static void	push(stack_list **dst, stack_list **src)
 	}
 }
 
-void	pa(stack_list **a, stack_list **b)
+void	pa(t_stack_list **a, t_stack_list **b)
 {
 	push(a, b);
 	ft_putstr("pa\n");
 }
 
-void	pb(stack_list **b, stack_list **a)
+void	pb(t_stack_list **b, t_stack_list **a)
 {
 	push(b, a);
 	ft_putstr("pb\n");

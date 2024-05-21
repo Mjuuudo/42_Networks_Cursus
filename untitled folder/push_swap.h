@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:20:11 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:24:15 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:05:01 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct stack_list
 	struct stack_list	*next;
 	struct stack_list	*prev;
 
-}						stack_list;
+}						t_stack_list;
 
 // Outils Used for parsing
 
@@ -41,58 +41,58 @@ void					ft_putstr(char *s);
 
 //  Stack Creation
 
-void					ft_stack_init(stack_list **stack, char **argv,
+void					ft_stack_init(t_stack_list **stack, char **argv,
 							int flag_heapornpot);
-void					ft_addnode(stack_list **stack, int data);
-stack_list				*ft_getlastnode(stack_list *stack);
-int						ft_checksorted(stack_list *stack_a);
-int						ft_stacklength(stack_list *stack_a);
+void					ft_addnode(t_stack_list **stack, int data);
+t_stack_list				*ft_getlastnode(t_stack_list *stack);
+int						ft_checksorted(t_stack_list *stack_a);
+int						ft_stacklength(t_stack_list *stack_a);
 
 // Error handling
 
-int						ft_checkrepetition(stack_list *head, int number);
-void					ft_freelinkedlist(stack_list **head);
+int						ft_checkrepetition(t_stack_list *head, int number);
+void					ft_freelinkedlist(t_stack_list **head);
 void					ft_freeheapargv(char **argv);
-void					ft_freeerrors(stack_list **head, char **argv,
+void					ft_freeerrors(t_stack_list **head, char **argv,
 							int flag_heapornot);
 int						syntaxe_error(const char *string);
 
 // Movements
 
-void					pa(stack_list **a, stack_list **b);
-void					pb(stack_list **b, stack_list **a);
-void					rra(stack_list **a);
-void					rrb(stack_list **b);
-void					rrr(stack_list **a, stack_list **b);
-void					ra(stack_list **a);
-void					rb(stack_list **b);
-void					rr(stack_list **a, stack_list **b);
-void					sa(stack_list **a);
-void					sb(stack_list **b);
-void					ss(stack_list **a, stack_list **b);
+void					pa(t_stack_list **a, t_stack_list **b);
+void					pb(t_stack_list **b, t_stack_list **a);
+void					rra(t_stack_list **a);
+void					rrb(t_stack_list **b);
+void					rrr(t_stack_list **a, t_stack_list **b);
+void					ra(t_stack_list **a);
+void					rb(t_stack_list **b);
+void					rr(t_stack_list **a, t_stack_list **b);
+void					sa(t_stack_list **a);
+void					sb(t_stack_list **b);
+void					ss(t_stack_list **a, t_stack_list **b);
 
 // Sorting Function
 
-void					ft_sort_three(stack_list **a);
-stack_list				*find_min(stack_list *stack);
-stack_list				*find_max(stack_list *stack);
+void					ft_sort_three(t_stack_list **a);
+t_stack_list				*find_min(t_stack_list *stack);
+t_stack_list				*find_max(t_stack_list *stack);
 
 // from a to b
 
-void					ft_push_price(stack_list **a, stack_list **b);
-void					ft_set_target_a(stack_list *a, stack_list *b);
-void					current_index(stack_list *stack);
-void					ft_set_cheapest(stack_list *stack);
-void					init_nodes_a(stack_list *a, stack_list *b);
-void					prep_for_push(stack_list **stack, stack_list *top_node,
+void					ft_push_price(t_stack_list **a, t_stack_list **b);
+void					ft_set_target_a(t_stack_list *a, t_stack_list *b);
+void					current_index(t_stack_list *stack);
+void					ft_set_cheapest(t_stack_list *stack);
+void					init_nodes_a(t_stack_list *a, t_stack_list *b);
+void					prep_for_push(t_stack_list **stack, t_stack_list *top_node,
 							char stack_name);
-stack_list				*ft_get_cheapest(stack_list *stack);
-void					ft_push_swap(stack_list **a, stack_list **b);
-void					init_nodes_b(stack_list *a, stack_list *b);
-void					max_on_top(stack_list **b);
-void					ft_calc_movtg(stack_list **stack_a,
-							stack_list **stack_b, stack_list *node);
-stack_list				*ft_calc_lessmoves(stack_list **stack_a);
-void					min_on_top(stack_list **a);
+t_stack_list				*ft_get_cheapest(t_stack_list *stack);
+void					ft_push_swap(t_stack_list **a, t_stack_list **b);
+void					init_nodes_b(t_stack_list *a, t_stack_list *b);
+void					max_on_top(t_stack_list **b);
+void					ft_calc_movtg(t_stack_list **stack_a,
+							t_stack_list **stack_b, t_stack_list *node);
+t_stack_list				*ft_calc_lessmoves(t_stack_list **stack_a);
+void					min_on_top(t_stack_list **a);
 
 #endif

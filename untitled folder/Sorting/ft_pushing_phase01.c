@@ -6,13 +6,13 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:21:51 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 12:02:27 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:07:28 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	current_index(stack_list *stack)
+void	current_index(t_stack_list *stack)
 {
 	int	i;
 	int	median;
@@ -33,10 +33,10 @@ void	current_index(stack_list *stack)
 	}
 }
 
-void	ft_set_target_a(stack_list *a, stack_list *b)
+void	ft_set_target_a(t_stack_list *a, t_stack_list *b)
 {
-	stack_list	*current_b;
-	stack_list	*target_node; 
+	t_stack_list	*current_b;
+	t_stack_list	*target_node; 
 	long			best_match_index; 
 
 	while (a) 
@@ -61,11 +61,11 @@ void	ft_set_target_a(stack_list *a, stack_list *b)
 	}
 }
 
-void	ft_push_price(stack_list **a, stack_list **b)
+void	ft_push_price(t_stack_list **a, t_stack_list **b)
 {
 	int			size_a;
 	int			size_b;
-	stack_list	*temp;
+	t_stack_list	*temp;
 
 	size_a = ft_stacklength(*a);
 	size_b = ft_stacklength(*b);
@@ -85,20 +85,11 @@ void	ft_push_price(stack_list **a, stack_list **b)
 	}
 }
 
-void	init_nodes_a(stack_list *a, stack_list *b)
+void	init_nodes_a(t_stack_list *a, t_stack_list *b)
 {
 	current_index(a);
 	current_index(b);
 	ft_set_target_a(a, b);
 	ft_push_price(&a, &b);
 	ft_set_cheapest(a);
-
-	// stack_list *current_a;
-
-	// current_a = a;
-	// while (current_a)
-	// {
-	// 	printf("data %d target %d push cost %d taget index %d\n", current_a->data ,current_a->target_node->data, current_a->push_cost, current_a->target_node->current_position);
-	// 	current_a = current_a->next;
-	// }
 }

@@ -6,13 +6,13 @@
 #    By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 20:25:56 by abait-ou          #+#    #+#              #
-#    Updated: 2024/05/21 10:47:56 by abait-ou         ###   ########.fr        #
+#    Updated: 2024/05/21 13:15:05 by abait-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 GREEN = \033[1;32m
-YELLOW = \033[1;33m
+YELLOW = \x1b[33m
 RED = \033[1;31m
 BLUE = \033[34m
 MAGENTA = \033[35m
@@ -36,16 +36,16 @@ $(NAME): $(OBJS)
 
 %.o: %.c
 	@$(COMPILER) -c $< -o $@
-	@echo "$(ORANGE)[!] $(RED) Compiling The File $<"
+	@echo "$(ORANGE)[!] $(YELLOW) Compiling The File $<"
 	@echo "$(GREEN)[✔]Done ... ! "
 	
  clean:
 	@$(REMOVE) $(OBJS)
-	@echo "$(RED)[!] $(GREEN) Removing in progress ..."
+	@echo "$(RED)[!] $(YELLOW) Removing in progress ..."
 	@echo "$(GREEN)[✔]  Done ... ! "
 fclean:
-	@$(REMOVE) $(NAME)
-	@echo "$(RED)[!] $(GREEN) Removing in progress ..."
+	@$(REMOVE) $(NAME) $(OBJS)
+	@echo "$(RED)[!] $(YELLOW) Removing in progress ..."
 	@echo "$(GREEN)[✔]  Done ... ! "
 re:   fclean all
 .PHONY:  all clean fclean re

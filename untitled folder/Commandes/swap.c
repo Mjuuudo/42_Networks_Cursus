@@ -6,13 +6,13 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:25 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:10:52 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:05:48 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static void	swap(stack_list **head)
+static void	swap(t_stack_list **head)
 {
 	if (!*head || !(*head)->next)
 		return ;
@@ -25,19 +25,19 @@ static void	swap(stack_list **head)
 	(*head)->prev = NULL;
 }
 
-void	sa(stack_list **a)
+void	sa(t_stack_list **a)
 {
 	swap(a);
 	ft_putstr("sa\n");
 }
 
-void	sb(stack_list **b)
+void	sb(t_stack_list **b)
 {
 	swap(b);
 	ft_putstr("sb\n");
 }
 
-void	ss(stack_list **a, stack_list **b)
+void	ss(t_stack_list **a, t_stack_list **b)
 {
 	swap(a);
 	swap(b);

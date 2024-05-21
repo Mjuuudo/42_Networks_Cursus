@@ -6,14 +6,14 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:21:49 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:25:55 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:06:31 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_calc_movtg(stack_list **stack_a, stack_list **stack_b,
-		stack_list *node)
+void	ft_calc_movtg(t_stack_list **stack_a, t_stack_list **stack_b,
+		t_stack_list *node)
 {
 	if (node->above_mediane == 1 && node->target_node->above_mediane == 1)
 	{
@@ -35,10 +35,10 @@ void	ft_calc_movtg(stack_list **stack_a, stack_list **stack_b,
 	}
 }
 
-void	ft_set_cheapest(stack_list *stack)
+void	ft_set_cheapest(t_stack_list *stack)
 {
 	long		cheapest_value;
-	stack_list	*cheapest_node;
+	t_stack_list	*cheapest_node;
 
 	if (!stack)
 		return ;
@@ -55,10 +55,10 @@ void	ft_set_cheapest(stack_list *stack)
 	cheapest_node->cheapest = 1;
 }
 
-stack_list	*ft_calc_lessmoves(stack_list **stack_a)
+t_stack_list	*ft_calc_lessmoves(t_stack_list **stack_a)
 {
-	stack_list	*temp_a;
-	stack_list	*selected_node;
+	t_stack_list	*temp_a;
+	t_stack_list	*selected_node;
 	int			min_qtmoves;
 
 	temp_a = *stack_a;
@@ -76,7 +76,7 @@ stack_list	*ft_calc_lessmoves(stack_list **stack_a)
 	return (selected_node);
 }
 
-void	min_on_top(stack_list **a)
+void	min_on_top(t_stack_list **a)
 {
 	while ((*a)->data != find_min(*a)->data)
 	{
