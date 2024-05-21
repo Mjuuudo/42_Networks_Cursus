@@ -6,89 +6,11 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:33:56 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/19 22:02:43 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:55:52 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// static int	count_words(char *s, char c)
-// {
-// 	int		count;
-// 	int	inside_word;
-
-// 	count = 0;
-// 	while (*s)
-// 	{
-// 		inside_word = 0;
-// 		while (*s == c)
-// 			++s;
-// 		while (*s != c && *s)
-// 		{
-// 			if (!inside_word)
-// 			{
-// 				++count;
-// 				inside_word = 1;
-// 			}
-// 			++s;
-// 		}
-// 	}
-// 	return (count);
-// }
-
-// static char	*get_next_word(char *s, char c)
-// {
-// 	static int	cursor = 0;
-// 	char		*next_word;
-// 	int			len;
-// 	int			i;
-
-// 	len = 0;
-// 	i = 0;
-// 	while (s[cursor] == c)
-// 		++cursor;
-// 	while ((s[cursor + len] != c) && s[cursor + len])
-// 		++len;
-// 	next_word = malloc((size_t)len * sizeof(char) + 1);
-// 	if (!next_word)
-// 		return (NULL);
-// 	while ((s[cursor] != c) && s[cursor])
-// 		next_word[i++] = s[cursor++];
-// 	next_word[i] = '\0';
-// 	return (next_word);
-// }
-
-// char **ft_split(char  *s, char c)
-// {
-// 	int		words_count;
-// 	char	**result_array;
-// 	int		i;
-
-// 	i = 0;
-// 	words_count = count_words(s, c);
-// 	if (!words_count)
-// 	{
-// 		ft_putstr("Error\n");
-// 		exit(1);
-// 	}
-// 	result_array = malloc(sizeof(char *) * (size_t)(words_count + 1));
-// 	if (!result_array)
-// 		return (NULL);
-// 	while (words_count-- >= 0)
-// 	{
-// 		// if (i == 0)
-// 		// {
-// 		// 	result_array[i] = malloc(sizeof(char));
-// 		// 	if (!result_array[i])
-// 		// 		return (NULL);
-// 		// 	result_array[i++][0] = '\0';
-// 		// 	continue ;
-// 		// }
-// 		result_array[i++] = get_next_word(s, c);
-// 	}
-// 	result_array[i] = NULL;
-// 	return (result_array);
-// }
 
 static int	count_words(const char *str, char c)
 {
@@ -123,6 +45,33 @@ static char	*word_dup(const char *str, int start, int finish)
 	word[i] = '\0';
 	return (word);
 }
+int		ft_strlen(char *s)
+{
+	int length;
+
+	length = 0;
+	while (s[length])
+	{
+		length++;
+	}
+	return (length);
+}
+static void ft_checklength(char **split)
+{
+	int compteur;
+
+	compteur = 0;
+	while (split[compteur])
+	{
+		if (ft_strlen(split[compteur]) > 12)
+		{
+			ft_putstr("Error\n");
+			ft_freeheapargv(split);
+			exit(0);
+		}
+		compteur++;
+	}
+}
 
 char	**ft_split(char const *s, char c)
 {
@@ -149,5 +98,10 @@ char	**ft_split(char const *s, char c)
 		i++;
 	}
 	split[j] = 0;
+	ft_checklength(split);
 	return (split);
 }
+
+
+
+

@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:20:11 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 13:05:01 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:52:52 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void					ft_calc_movtg(t_stack_list **stack_a,
 							t_stack_list **stack_b, t_stack_list *node);
 t_stack_list				*ft_calc_lessmoves(t_stack_list **stack_a);
 void					min_on_top(t_stack_list **a);
+int		ft_strlen(char *s);
 
 #endif
