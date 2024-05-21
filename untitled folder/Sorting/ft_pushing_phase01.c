@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 15:21:51 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/20 14:23:10 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 12:02:27 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,27 @@ void	current_index(stack_list *stack)
 void	ft_set_target_a(stack_list *a, stack_list *b)
 {
 	stack_list	*current_b;
-	stack_list	*target_node;
-	long		best_match_index;
+	stack_list	*target_node; 
+	long			best_match_index; 
 
-	while (a)
+	while (a) 
 	{
-		best_match_index = LONG_MIN;
+		best_match_index = LONG_MIN; 
 		current_b = b;
-		while (current_b)
+		while (current_b) 
 		{
-			if (current_b->data < a->data && current_b->data > best_match_index)
+			if (current_b->data < a->data 
+				&& current_b->data > best_match_index) 
 			{
-				best_match_index = current_b->data;
-				target_node = current_b;
+				best_match_index = current_b->data; 
+				target_node = current_b; 
 			}
-			current_b = current_b->next;
+			current_b = current_b->next; 
 		}
-		if (best_match_index == LONG_MIN)
+		if (best_match_index == LONG_MIN) 
 			a->target_node = find_max(b);
 		else
-			a->target_node = target_node;
+			a->target_node = target_node; 
 		a = a->next;
 	}
 }
@@ -91,4 +92,13 @@ void	init_nodes_a(stack_list *a, stack_list *b)
 	ft_set_target_a(a, b);
 	ft_push_price(&a, &b);
 	ft_set_cheapest(a);
+
+	// stack_list *current_a;
+
+	// current_a = a;
+	// while (current_a)
+	// {
+	// 	printf("data %d target %d push cost %d taget index %d\n", current_a->data ,current_a->target_node->data, current_a->push_cost, current_a->target_node->current_position);
+	// 	current_a = current_a->next;
+	// }
 }
