@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:24:49 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 13:09:04 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:44:08 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		s = ft_split(argv[1], ' ');
-		ft_stack_init(&a, s, 1);
+		ft_stack_init_1(&a, s, 1);
 	}
 	else
 		ft_stack_init(&a, argv, 0);

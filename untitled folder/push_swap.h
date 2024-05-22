@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:20:11 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 15:52:52 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:44:02 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,9 @@ void					ft_calc_movtg(t_stack_list **stack_a,
 t_stack_list				*ft_calc_lessmoves(t_stack_list **stack_a);
 void					min_on_top(t_stack_list **a);
 int		ft_strlen(char *s);
+void	ft_CreationofStack(t_stack_list **a, char *buffer , int flag_heapornot);
+int  ft_checkargtype(char *arg);
+void ft_Hardcreation(t_stack_list **a, char *arg, int flag_heapornot);
+void	ft_stack_init_1(t_stack_list **a, char **argv, int flag_heapornot);
 
 #endif

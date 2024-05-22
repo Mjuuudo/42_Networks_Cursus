@@ -6,7 +6,7 @@
 #    By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 20:25:56 by abait-ou          #+#    #+#              #
-#    Updated: 2024/05/21 13:52:18 by abait-ou         ###   ########.fr        #
+#    Updated: 2024/05/21 19:53:33 by abait-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ RED = \033[1;31m
 ORANGE = \033[1;38;5;208m
 SRCS 		 = push_swap.c Outils/ft_split.c Outils/ft_atol.c Outils/ft_print.c Stack_Creation/ft_stackcreation.c Error_handling/ft_Errors.c\
 				Commandes/push.c Commandes/rev_rotate.c Commandes/rotate.c Commandes/swap.c Sorting/ft_movements.c Sorting/ft_pushing_phase01.c\
-				Sorting/ft_pushing_phase02.c Sorting/ft-sortthree.c Sorting/Additional.c\
+				Sorting/ft_pushing_phase02.c Sorting/ft-sortthree.c Sorting/Additional.c Stack_Creation/ft_ParsingSuite.c\
 				
 
 OBJS		 = $(SRCS:.c=.o)
@@ -41,7 +41,7 @@ $(NAME): $(OBJS)
 	@echo "$(GREEN)[✔]  Done ... ! "
 fclean:
 	@$(REMOVE) $(NAME) $(OBJS)
-	@echo "$(RED)[!] $(YELLOW) Removing in progress ..."
+	@echo "$(RED)[!] $(YELLOW) Removing in progress $(RED).$(GREEN).$(YELLOW). - > $(RED) $(OBJS)"
 	@echo "$(GREEN)[✔]  Done ... ! "
 re:   fclean all
 .PHONY:  all clean fclean re

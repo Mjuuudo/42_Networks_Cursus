@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:36:40 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 13:08:38 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 19:55:44 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,17 @@ void	ft_stack_init(t_stack_list **a, char **argv, int flag_heapornot)
 		i = 1;
 	while (argv[i])
 	{
-		if (syntaxe_error(argv[i]))
-			ft_freeerrors(a, argv, flag_heapornot);
-		n = ft_atol(argv[i]);
-		if (n > INT_MAX || n < INT_MIN)
-			ft_freeerrors(a, argv, flag_heapornot);
-		if (ft_checkrepetition(*a, (int)n))
-			ft_freeerrors(a, argv, flag_heapornot);
-		ft_addnode(a, (int)n);
+		if (ft_checkargtype(argv[i]) == 0)
+				ft_CreationofStack(a, argv[i], flag_heapornot);
+		else if (ft_checkargtype(argv[i]) == 1)
+		{
+			ft_Hardcreation(a, argv[i], flag_heapornot);
+		}
 		i++;
 	}
 	if (flag_heapornot)
 		ft_freeheapargv(argv);
 }
+
+
+

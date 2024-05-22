@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:33:56 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 15:55:52 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 18:47:47 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,22 @@ int		ft_strlen(char *s)
 	}
 	return (length);
 }
-static void ft_checklength(char **split)
-{
-	int compteur;
+// static void ft_checklength(char **split)
+// {
+// 	int compteur;
 
-	compteur = 0;
-	while (split[compteur])
-	{
-		if (ft_strlen(split[compteur]) > 12)
-		{
-			ft_putstr("Error\n");
-			ft_freeheapargv(split);
-			exit(0);
-		}
-		compteur++;
-	}
-}
+// 	compteur = 0;
+// 	while (split[compteur])
+// 	{
+// 		if (ft_strlen(split[compteur]) > 12)
+// 		{
+// 			ft_putstr("Error\n");
+// 			ft_freeheapargv(split);
+// 			exit(0);
+// 		}
+// 		compteur++;
+// 	}
+// }
 
 char	**ft_split(char const *s, char c)
 {
@@ -98,7 +98,7 @@ char	**ft_split(char const *s, char c)
 		i++;
 	}
 	split[j] = 0;
-	ft_checklength(split);
+	// ft_checklength(split);
 	return (split);
 }
 

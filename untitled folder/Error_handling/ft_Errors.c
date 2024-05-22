@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:49:12 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/21 13:06:17 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:10:51 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_freeheapargv(char **argv)
 		free(argv[compteur]);
 		compteur++;
 	}
-	free(argv);
+	// free(argv);
 }
 
 void	ft_freeerrors(t_stack_list **head, char **argv, int flag_heapornot)
