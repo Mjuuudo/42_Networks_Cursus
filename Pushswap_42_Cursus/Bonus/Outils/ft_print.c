@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/10 14:54:30 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 21:15:36 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/05/09 20:52:42 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/05/23 20:18:24 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker.h"
 
-static void	rev_rotate(t_stack_list **stack)
+static void	ft_putchar(char c)
 {
-	t_stack_list	*last;
+	write(1, &c, 1);
+}
 
-	if (!*stack || !(*stack)->next)
+void	ft_putstr(char *s)
+{
+	int	compteur;
+
+	compteur = 0;
+	if (!s)
 		return ;
-	last = ft_getlastnode(*stack);
-	last->prev->next = NULL;
-	last->next = *stack;
-	last->prev = NULL;
-	*stack = last;
-	last->next->prev = last;
+	while (s[compteur])
+	{
+		ft_putchar(s[compteur]);
+		compteur++;
+	}
 }
 
-void	rra(t_stack_list **a)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	rev_rotate(a);
-	
-}
+	int		i;
 
-void	rrb(t_stack_list **b)
-{
-	rev_rotate(b);
-
-}
-
-void	rrr(t_stack_list **a, t_stack_list **b)
-{
-	rev_rotate(a);
-	rev_rotate(b);
-
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

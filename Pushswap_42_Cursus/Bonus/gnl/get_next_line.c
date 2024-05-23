@@ -6,11 +6,11 @@
 /*   By: abait-ou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:26:42 by abait-ou          #+#    #+#             */
-/*   Updated: 2023/12/18 12:51:44 by abait-ou         ###   ########.fr       */
+/*   Updated: 2023/12/26 15:22:41 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static char	*join_to_storage(char *cup, char *storage)
 {
@@ -88,20 +88,20 @@ static char	*get_the_rest(char *storage)
 
 char	*get_next_line(int fd)
 {
-	static char	*storage[1024];
+	static char	*storage;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!storage[fd])
-		storage[fd] = ft_calloc(1, sizeof(char));
-	if (!storage[fd])
+	if (!storage)
+		storage = ft_calloc(1, sizeof(char));
+	if (!storage)
 		return (NULL);
-	if (!ft_strchr(storage[fd], '\n'))
-		storage[fd] = read_from_file(fd, storage[fd]);
-	if (!storage[fd])
+	if (!ft_strchr(storage, '\n'))
+		storage = read_from_file(fd, storage);
+	if (!storage)
 		return (NULL);
-	line = exctract_line(storage[fd]);
-	storage[fd] = get_the_rest(storage[fd]);
+	line = exctract_line(storage);
+	storage = get_the_rest(storage);
 	return (line);
 }

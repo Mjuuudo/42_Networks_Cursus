@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_Errors.c                                        :+:      :+:    :+:   */
+/*   ft_handling_error.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/09 20:49:12 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 20:35:08 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/05/23 15:11:34 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/05/23 15:12:03 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../checker.h"
 
 int	ft_checkrepetition(t_stack_list *head, int number)
 {
@@ -83,4 +83,3 @@ int	syntaxe_error(const char *string)
 	}
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:25 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/22 15:05:13 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:21:11 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ static void	swap(t_stack_list **head)
 	(*head)->prev = NULL;
 }
 
-void	sa_b(t_stack_list **a)
+void	sa(t_stack_list **a)
 {
 	swap(a);
 }
 
-void	sb_b(t_stack_list **b)
+void	sb(t_stack_list **b)
 {
 	swap(b);
 }
 
-void	ss_b(t_stack_list **a, t_stack_list **b)
+void	ss(t_stack_list **a, t_stack_list **b)
 {
 	swap(a);
 	swap(b);

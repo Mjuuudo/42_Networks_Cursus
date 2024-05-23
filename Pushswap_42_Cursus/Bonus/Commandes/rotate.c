@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:28 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/22 15:05:09 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:21:05 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ static void	rotate(t_stack_list **stack)
 	last_node->next->next = NULL;
 }
 
-void	ra_b(t_stack_list **a)
+void	ra(t_stack_list **a)
 {
 	rotate(a);
 }
 
-void	rb_b(t_stack_list **b)
+void	rb(t_stack_list **b)
 {
 	rotate(b);
 }
 
-void	rr_b(t_stack_list **a, t_stack_list **b)
+void	rr(t_stack_list **a, t_stack_list **b)
 {
 	rotate(a);
 	rotate(b);

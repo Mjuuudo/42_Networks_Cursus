@@ -6,7 +6,7 @@
 #    By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 20:25:56 by abait-ou          #+#    #+#              #
-#    Updated: 2024/05/23 10:07:10 by abait-ou         ###   ########.fr        #
+#    Updated: 2024/05/23 21:16:57 by abait-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,28 +21,31 @@ SRCS 		 = push_swap.c Outils/ft_split.c Outils/ft_atol.c Outils/ft_print.c Stack
 				Sorting/ft_pushing_phase02.c Sorting/ft-sortthree.c Sorting/Additional.c Stack_Creation/ft_ParsingSuite.c\
 				
 
-BONUS_SRCS	 = ../Bonus/checker.c ../Bonus/checker_utils.c ../Bonus/get_next_line_bonus.c ../Bonus/get_next_line_utils.c\
-				Outils/ft_split.c Outils/ft_atol.c Outils/ft_print.c Stack_Creation/ft_stackcreation.c Error_handling/ft_Errors.c Stack_Creation/ft_ParsingSuite.c\
-				../Bonus/Commandes/push.c ../Bonus/Commandes/rev_rotate.c ../Bonus/Commandes/rotate.c ../Bonus/Commandes/swap.c \
-					
+BONUS_SRCS	 = ../Bonus/checker.c  ../Bonus/Errors/ft_handling_error.c ../Bonus/Outils/ft_atol.c ../Bonus/Outils/ft_print.c ../Bonus/Outils/ft_split.c\
+			   	../Bonus/Stack_Creation/ft_CreationParse.c ../Bonus/Stack_Creation/ft_Parsingsuite.c ../Bonus/Commandes/push.c ../Bonus/Commandes/rev_rotate.c\
+				../Bonus/Commandes/rotate.c ../Bonus/Commandes/swap.c  \
+				 ../Bonus/gnl/get_next_line.c ../Bonus/gnl/get_next_line_utils.c \
+			   
 BONUS_OBJS	 = $(BONUS_SRCS:.c=.o)
 OBJS		 = $(SRCS:.c=.o)
 NAME		 = push_swap 
 BONUS		 = checker
-COMPILER     = gcc
+COMPILER     = cc
 REMOVE		 = rm -rf
 
-all:	$(NAME) 
+all: $(NAME)
 	
 $(NAME): $(OBJS)
 	@$(COMPILER) $(OBJS) -o $(NAME)
+
+bonus:  $(BONUS)
 
 $(BONUS): $(BONUS_OBJS) 
 	@$(COMPILER) $(BONUS_OBJS) -o $(BONUS)
 
 %.o: %.c
 	@$(COMPILER) -c $< -o $@
-	@echo "@$(ORANGE)[!] @$(YELLOW) Compiling The File $<"
+	@echo "$(ORANGE)[!] $(YELLOW) Compiling The File $<"
 	@echo "$(GREEN)[✔]Done ... ! "
 	
  clean:

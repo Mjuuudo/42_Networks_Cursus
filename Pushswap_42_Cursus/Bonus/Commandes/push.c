@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 14:54:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/22 15:05:37 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/23 20:38:17 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,12 @@ static void	push(t_stack_list **dst, t_stack_list **src)
 	}
 }
 
-void	pa_b(t_stack_list **a, t_stack_list **b)
+void	pa(t_stack_list **a, t_stack_list **b)
 {
 	push(a, b);
-	
 }
 
-void	pb_b(t_stack_list **b, t_stack_list **a)
+void	pb(t_stack_list **b, t_stack_list **a)
 {
 	push(b, a);
-	
 }

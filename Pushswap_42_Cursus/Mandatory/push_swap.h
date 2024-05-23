@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:20:11 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 10:01:14 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/23 13:13:01 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ void					ft_hardcreation(t_stack_list **a, char *arg,
 							int flag_heapornot);
 void					ft_stack_init_1(t_stack_list **a, char **argv,
 							int flag_heapornot);
-int  ft_check_space(const char *s);
+int  					ft_check_space(const char *s);
 
 #endif
