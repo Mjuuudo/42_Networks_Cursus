@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:06:37 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 21:18:39 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:05:36 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,31 @@ void ft_applymovements(t_stack_list **a, t_stack_list **b, char *holder)
 {
     if (ft_strcmp("pa\n", holder) == 0)
         pa(a, b);
+    
     else if (ft_strcmp("pb\n", holder) == 0)
         pb(b, a);
+
     else if (ft_strcmp("sa\n", holder) == 0)
         sa(a);
+    
     else if (ft_strcmp("sb\n", holder) == 0)
         sb(b);
+    
     else if (ft_strcmp("ra\n", holder) == 0)
         ra(a);
+    
     else if (ft_strcmp("rb\n", holder) == 0)
         rb(b);
+    
     else if (ft_strcmp("rr\n", holder) == 0)
         rr(a, b);
+    
     else if (ft_strcmp("rra\n", holder) == 0)
         rra(a);
+    
     else if (ft_strcmp("rrb\n", holder) == 0)
-        rrb(a);
+        rrb(b);
+    
     else if (ft_strcmp("rrr\n", holder) == 0)
         rrr(a, b);
     else 
