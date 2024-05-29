@@ -68,19 +68,19 @@ int	syntaxe_error(const char *string)
 {
 	int	compteur;
 
-	if (!string  ||   ((string[0] == '-' || string[0] == '+') && string[1] == '\0'))
-			return (1); 
+	if (!string || ((string[0] == '-' || string[0] == '+')
+			&& string[1] == '\0'))
+		return (1);
 	compteur = 0;
 	if (string[compteur] == '-' || string[compteur] == '+')
 		compteur++;
 	while (string[compteur])
 	{
-		if ((string[compteur] >= 48 && string[compteur] <= 57) || 
-					string[compteur] == ' ')
+		if ((string[compteur] >= 48 && string[compteur] <= 57)
+			|| string[compteur] == ' ')
 			compteur++;
 		else
 			return (1);
 	}
 	return (0);
 }
-

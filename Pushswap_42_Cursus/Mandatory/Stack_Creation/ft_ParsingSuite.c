@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:04:01 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 10:24:55 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/26 15:02:04 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int	ft_checkargtype(char *arg)
 	}
 	while (arg[compteur])
 	{
-		if ((arg[compteur] >= 48 && arg[compteur] <= 57))
+		if ((arg[compteur] >= 48 && arg[compteur] <= 57)
+			|| (arg[compteur] == '-' || arg[compteur] == '+'))
 			compteur++;
 		else if (arg[compteur] == ' ')
-		{
-			flag = 1;
-			break ;
-		}
+			return (1);
+		else
+			return (-1);
 	}
 	return (flag);
 }

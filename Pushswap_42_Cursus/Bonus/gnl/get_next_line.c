@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abait-ou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:26:42 by abait-ou          #+#    #+#             */
-/*   Updated: 2023/12/26 15:22:41 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:49:35 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (free(storage), NULL);
 	if (!storage)
 		storage = ft_calloc(1, sizeof(char));
 	if (!storage)

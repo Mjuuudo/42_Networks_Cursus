@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:11:34 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 15:12:03 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:22:51 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,16 @@ int	syntaxe_error(const char *string)
 {
 	int	compteur;
 
-	if (!string  ||   ((string[0] == '-' || string[0] == '+') && string[1] == '\0'))
-			return (1); 
+	if (!string || ((string[0] == '-' || string[0] == '+')
+			&& string[1] == '\0'))
+		return (1);
 	compteur = 0;
 	if (string[compteur] == '-' || string[compteur] == '+')
 		compteur++;
 	while (string[compteur])
 	{
-		if ((string[compteur] >= 48 && string[compteur] <= 57) || 
-					string[compteur] == ' ')
+		if ((string[compteur] >= 48 && string[compteur] <= 57)
+			|| string[compteur] == ' ')
 			compteur++;
 		else
 			return (1);

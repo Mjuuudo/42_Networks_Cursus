@@ -87,18 +87,18 @@ void	min_on_top(t_stack_list **a)
 	}
 }
 
-int  ft_check_space(const char *s)
+int	ft_check_space(const char *s)
 {
-	int compteur;
-	int flag;
+	int	compteur;
+	int	flag;
 
 	compteur = 0;
-	flag     = 1;
+	flag = 1;
 	while (s[compteur])
 	{
 		if (s[compteur] != ' ')
-				return (0);
-		compteur ++;
+			return (0);
+		compteur++;
 	}
 	return (flag);
 }

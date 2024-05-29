@@ -6,11 +6,18 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:48:05 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 15:18:36 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:29:10 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../checker.h"
+
+static int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}
 
 long long	ft_atol(const char *str)
 {
@@ -29,11 +36,22 @@ long long	ft_atol(const char *str)
 		i++;
 	}
 	number = 0;
-	while (isdigit(str[i]))
+	while (ft_isdigit(str[i]))
 	{
 		number *= 10;
 		number = str[i] - 48 + number;
 		i++;
 	}
 	return (number * sign);
+}
+
+void	avoid_norminette(t_stack_list **a, t_stack_list **b)
+{
+	practice(a, b);
+	if (ft_checksorted(*a) && !(*b))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+	ft_freelinkedlist(a);
+	ft_freelinkedlist(b);
 }

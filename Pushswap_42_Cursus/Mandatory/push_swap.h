@@ -102,6 +102,6 @@ void					ft_hardcreation(t_stack_list **a, char *arg,
 							int flag_heapornot);
 void					ft_stack_init_1(t_stack_list **a, char **argv,
 							int flag_heapornot);
-int  					ft_check_space(const char *s);
+int						ft_check_space(const char *s);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/09 20:25:56 by abait-ou          #+#    #+#              #
-#    Updated: 2024/05/23 21:16:57 by abait-ou         ###   ########.fr        #
+#    Updated: 2024/05/29 16:27:17 by abait-ou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ BONUS_SRCS	 = ../Bonus/checker.c  ../Bonus/Errors/ft_handling_error.c ../Bonus/O
 			   
 BONUS_OBJS	 = $(BONUS_SRCS:.c=.o)
 OBJS		 = $(SRCS:.c=.o)
+FLAGS		 = -Wall -Werror -Wextra
 NAME		 = push_swap 
 BONUS		 = checker
 COMPILER     = cc
@@ -36,12 +37,12 @@ REMOVE		 = rm -rf
 all: $(NAME)
 	
 $(NAME): $(OBJS)
-	@$(COMPILER) $(OBJS) -o $(NAME)
+	@$(COMPILER) $(FLAGS) $(OBJS) -o $(NAME)
 
 bonus:  $(BONUS)
 
 $(BONUS): $(BONUS_OBJS) 
-	@$(COMPILER) $(BONUS_OBJS) -o $(BONUS)
+	@$(COMPILER) $(FLAGS) $(BONUS_OBJS) -o $(BONUS)
 
 %.o: %.c
 	@$(COMPILER) -c $< -o $@

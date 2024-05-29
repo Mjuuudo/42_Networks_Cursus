@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:33:56 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 15:19:18 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:43:40 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static char	*word_dup(const char *str, int start, int finish)
 	return (word);
 }
 
-
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
@@ -60,11 +59,11 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	index = -1;
-	while (i <= strlen(s))
+	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && index < 0)
 			index = i;
-		else if ((s[i] == c || i == strlen(s)) && index >= 0)
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
 			split[j++] = word_dup(s, index, i);
 			index = -1;

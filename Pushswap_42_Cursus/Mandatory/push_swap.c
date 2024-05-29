@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:24:49 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 11:08:05 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:11:22 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,20 @@ static void	avoid_norminette(t_stack_list **a, t_stack_list **b)
 	ft_freelinkedlist(a);
 }
 
+int	ft_checkvide(char *s)
+{
+	int	compteur;
+
+	compteur = 0;
+	while (s[compteur])
+	{
+		if (s[compteur] != ' ')
+			return (1);
+		compteur++;
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_list	*a;
@@ -39,8 +53,15 @@ int	main(int argc, char **argv)
 		return (1);
 	if (argc == 2)
 	{
-		s = ft_split(argv[1], ' ');
-		ft_stack_init_1(&a, s, 1);
+		if (ft_checkvide(argv[1]) == 1)
+		{
+			s = ft_split(argv[1], ' ');
+			ft_stack_init_1(&a, s, 1);
+		}
+		else
+		{
+			ft_freeerrors(&a, s, 0);
+		}
 	}
 	else
 		ft_stack_init(&a, argv, 0);

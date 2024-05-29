@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 20:36:40 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 20:34:53 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:51:22 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	ft_stack_init(t_stack_list **a, char **argv, int flag_heapornot)
 		{
 			ft_hardcreation(a, argv[i], 1);
 		}
+		else
+			ft_freeerrors(a, argv, flag_heapornot);
 		i++;
 	}
 }

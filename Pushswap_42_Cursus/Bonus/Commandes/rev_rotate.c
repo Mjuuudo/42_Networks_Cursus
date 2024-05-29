@@ -29,18 +29,15 @@ static void	rev_rotate(t_stack_list **stack)
 void	rra(t_stack_list **a)
 {
 	rev_rotate(a);
-	
 }
 
 void	rrb(t_stack_list **b)
 {
 	rev_rotate(b);
-
 }
 
 void	rrr(t_stack_list **a, t_stack_list **b)
 {
 	rev_rotate(a);
 	rev_rotate(b);
-
 }

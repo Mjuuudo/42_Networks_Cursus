@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 15:16:01 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/05/23 15:17:49 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/05/29 15:54:31 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int	ft_checkargtype(char *arg)
 	}
 	while (arg[compteur])
 	{
-		if ((arg[compteur] >= 48 && arg[compteur] <= 57))
+		if ((arg[compteur] >= 48 && arg[compteur] <= 57)
+			|| (arg[compteur] == '-' || arg[compteur] == '+'))
 			compteur++;
 		else if (arg[compteur] == ' ')
-		{
-			flag = 1;
-			break ;
-		}
+			return (1);
+		else
+			return (-1);
 	}
 	return (flag);
 }
@@ -102,18 +102,18 @@ void	ft_stack_init_1(t_stack_list **a, char **argv, int flag_heapornot)
 		ft_freeheapargv(argv);
 }
 
-int  ft_check_space(const char *s)
+int	ft_check_space(const char *s)
 {
-	int compteur;
-	int flag;
+	int	compteur;
+	int	flag;
 
 	compteur = 0;
-	flag     = 1;
+	flag = 1;
 	while (s[compteur])
 	{
 		if (s[compteur] != ' ')
-				return (0);
-		compteur ++;
+			return (0);
+		compteur++;
 	}
 	return (flag);
 }
