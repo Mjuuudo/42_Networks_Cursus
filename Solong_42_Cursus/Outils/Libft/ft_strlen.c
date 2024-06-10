@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:58:00 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 16:02:01 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/06/10 14:09:25 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/06/10 15:02:41 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../so_long.h"
 
-int main(int argc, char **argv)
+int ft_strlen_x(char *s)
 {
-    t_container  container;
-    
-    if (argc != 2)
+    int compteur;
+
+    compteur = 0;
+    while (s[compteur])
     {
-        ft_putstr("Please Check The Number Of Args That You Entred ( Must Be 2 )\n");
-        exit(-1);
+        compteur++;
     }
-    ft_mapnamecheck(argv[1]);
-    ft_mapcreation(&container, argv[1]);
-    int i = 0;
-    while(container.map_holder[i])
-    {
-        printf("%s\n", container.map_holder[i++]);
-    }
+    return (compteur);
 }

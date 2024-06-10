@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abait-ou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:24:29 by abait-ou          #+#    #+#             */
-/*   Updated: 2023/12/15 14:59:09 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/06/10 15:15:06 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#   ifndef GET_NEXT_LINE_H
+#   define GET_NEXT_LINE_H
+#   ifndef BUFFER_SIZE
+#   define BUFFER_SIZE 3
 
-# endif
+#   endif
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -31,4 +31,4 @@ void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 
-#endif
+#   endif

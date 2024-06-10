@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:58:00 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 16:02:01 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/06/10 14:31:57 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/06/10 14:32:12 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
 
-int main(int argc, char **argv)
+#include "../../so_long.h"
+
+static void	ft_putchar(char c)
 {
-    t_container  container;
-    
-    if (argc != 2)
-    {
-        ft_putstr("Please Check The Number Of Args That You Entred ( Must Be 2 )\n");
-        exit(-1);
-    }
-    ft_mapnamecheck(argv[1]);
-    ft_mapcreation(&container, argv[1]);
-    int i = 0;
-    while(container.map_holder[i])
-    {
-        printf("%s\n", container.map_holder[i++]);
-    }
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *s)
+{
+	int	compteur;
+
+	compteur = 0;
+	if (!s)
+		return ;
+	while (s[compteur])
+	{
+		ft_putchar(s[compteur]);
+		compteur++;
+	}
 }

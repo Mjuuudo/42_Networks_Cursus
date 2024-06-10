@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 12:58:00 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 16:02:01 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/06/10 14:17:34 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/06/10 14:17:45 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../so_long.h"
 
-int main(int argc, char **argv)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-    t_container  container;
-    
-    if (argc != 2)
-    {
-        ft_putstr("Please Check The Number Of Args That You Entred ( Must Be 2 )\n");
-        exit(-1);
-    }
-    ft_mapnamecheck(argv[1]);
-    ft_mapcreation(&container, argv[1]);
-    int i = 0;
-    while(container.map_holder[i])
-    {
-        printf("%s\n", container.map_holder[i++]);
-    }
+	size_t	i;
+
+	i = 0;
+	while (i < n && (str1[i] != '\0' || str2[i] != '\0'))
+	{
+		if (str1[i] != str2[i])
+			return (((unsigned char)str1[i] - (unsigned char)str2[i]));
+		i++;
+	}
+	return (0);
 }
