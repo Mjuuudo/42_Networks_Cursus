@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:55:16 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 15:13:31 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/06/10 18:35:50 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ int	    ft_strncmp(const char *str1, const char *str2, size_t n);
 int      ft_mapnamecheck(char *name);
 void     ft_mapheight(t_container *container, char   *path);
 void     ft_mapcreation(t_container *container, char *map_name);
+void     ft_mapvalidation(t_container *container);
+int      ft_checkmaplength(t_container *container);
+void     ft_freeerrors(t_container *container);
 
 
 

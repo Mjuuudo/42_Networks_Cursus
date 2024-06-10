@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:58:00 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 16:02:01 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/06/10 21:18:40 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ int main(int argc, char **argv)
     }
     ft_mapnamecheck(argv[1]);
     ft_mapcreation(&container, argv[1]);
-    int i = 0;
-    while(container.map_holder[i])
-    {
-        printf("%s\n", container.map_holder[i++]);
-    }
+    ft_mapvalidation(&container);
+    ft_freeerrors(&container);
+  
 }
+
+//   int i = 0;
+//     while(container.map_holder[i])
+//     {
+//         printf("%s\n", container.map_holder[i++]);
+//     }

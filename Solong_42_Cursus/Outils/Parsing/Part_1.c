@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:12:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 15:26:48 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/06/10 21:18:57 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,32 @@ void    ft_mapcreation(t_container *container, char *map_name)
         line = get_next_line(fd);
     }
     close (fd);
+}
+
+void  ft_mapvalidation(t_container *container)
+{
+    if ((ft_checkmaplength(container)) == 0)
+    {
+        ft_freeerrors(container);
+        ft_putstr("Size Of Map Is Invalid !\n");
+    }
+        
+}
+
+int ft_checkmaplength(t_container *container)
+{
+    int compteur;
+    int length;
+
+    length = ft_strlen_x(container->map_holder[0]);
+    if (length > 1920)
+        return (0);
+    compteur = 1;
+    while (container->map_holder[compteur])
+    {
+        if (ft_strlen_x(container->map_holder[compteur]) != length)
+            return (0);
+        compteur++;   
+    }
+    return (1);  
 }
