@@ -55,6 +55,7 @@ void     ft_mapheight(t_container *container, char   *path);
 void     ft_mapcreation(t_container *container, char *map_name);
 void     ft_mapvalidation(t_container *container);
 int      ft_checkmaplength(t_container *container);
+int      ft_checklinescontent(t_container *container);
 void     ft_freeerrors(t_container *container);
 
 

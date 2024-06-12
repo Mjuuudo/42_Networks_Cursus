@@ -87,6 +87,11 @@ void  ft_mapvalidation(t_container *container)
         ft_freeerrors(container);
         ft_putstr("Size Of Map Is Invalid !\n");
     }
+    if (ft_checklinescontent(container) == -1)
+    {
+        ft_freeerrors(container);
+        ft_putstr("Content Of Map Is Invalid !\n");
+    }
         
 }
 

@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     ft_mapnamecheck(argv[1]);
     ft_mapcreation(&container, argv[1]);
     ft_mapvalidation(&container);
-    ft_freeerrors(&container);
+    // ft_freeerrors(&container);
   
 }
 
