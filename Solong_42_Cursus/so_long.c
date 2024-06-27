@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:58:00 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 21:18:40 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/06/27 18:11:06 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ int main(int argc, char **argv)
     ft_mapnamecheck(argv[1]);
     ft_mapcreation(&container, argv[1]);
     ft_mapvalidation(&container);
-    // ft_freeerrors(&container);
+    ft_isitrectangle(&container);
+    flood_fill(&container);
+ 
+    
   
 }
 
@@ -33,3 +36,9 @@ int main(int argc, char **argv)
 //     {
 //         printf("%s\n", container.map_holder[i++]);
 //     }
+
+    //  int i = 0;
+    // while(container.flood_fill[i])
+    // {
+    //     printf("%s\n", container.flood_fill[i++]);
+    // }

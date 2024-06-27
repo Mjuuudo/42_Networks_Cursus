@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 14:09:25 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/27 15:01:06 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/06/27 14:51:29 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/06/27 15:01:32 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int ft_strlen_x(char *s)
-{
-    int compteur;
-
-    compteur = 0;
-    while (s[compteur] && s[compteur] != '\n')
-    {
-        compteur++;
-    }
-    return (compteur);
-}
-
-// int ft_strlen(char *s)
+// char	*ft_strdup(char *src)
 // {
-//     int compteur;
+// 	char	*new;
+// 	int		i;
+// 	int		size;
 
-//     compteur = 0;
-//     while (s[compteur])
-//     {
-//         compteur++;
-//     }
-//     return (compteur);
+// 	size = 0;
+// 	while (src[size])
+// 		++size;
+// 	if (!(new = malloc(sizeof(char) * (size + 1))))
+// 		return (NULL);
+// 	i = 0;
+// 	while (src[i])
+// 	{
+// 		new[i] = src[i];
+// 		i++;
+// 	}
+// 	new[i] = '\0';
+// 	return (new);
 // }

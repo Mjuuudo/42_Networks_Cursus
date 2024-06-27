@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:12:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 21:18:57 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:06:00 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int  ft_mapnamecheck(char *name)
         ft_putstr("The name You Entred Is In Wong Format Please Try Again !");
         exit (-1);
     }
+    
     return (1);
 }
 
@@ -84,16 +85,32 @@ void  ft_mapvalidation(t_container *container)
 {
     if ((ft_checkmaplength(container)) == 0)
     {
-        ft_freeerrors(container);
         ft_putstr("Size Of Map Is Invalid !\n");
+        ft_freeerrors(container);
     }
     if (ft_checklinescontent(container) == -1)
     {
-        ft_freeerrors(container);
         ft_putstr("Content Of Map Is Invalid !\n");
+        ft_freeerrors(container);  
     }
-        
+    if(ft_checkrepetiton(container) == -1)
+    {
+        ft_putstr("An Element have been repeaated !\n");
+        ft_freeerrors(container);
+    }
+    else if (ft_checkrepetiton(container) == -2)
+    {
+        ft_putstr("No Collectible In the Map !\n");
+        ft_freeerrors(container);
+    }
+    else if (ft_checkrepetiton(container) == -3)
+    {
+        ft_putstr("No Exits In the Map !\n");
+        ft_freeerrors(container);
+    }
 }
+        
+
 
 int ft_checkmaplength(t_container *container)
 {

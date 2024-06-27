@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:55:16 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/10 18:35:50 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:45:52 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,21 @@ void     ft_mapcreation(t_container *container, char *map_name);
 void     ft_mapvalidation(t_container *container);
 int      ft_checkmaplength(t_container *container);
 int      ft_checklinescontent(t_container *container);
+int      resolution(t_container *container, char *string, int compteur);
 void     ft_freeerrors(t_container *container);
+int      ft_resolution2(char *string);
+int      validity(char s);
+int      ft_validatemapelement(char s);
+int      ft_checkrepetiton(t_container *container);
+int      ft_counter(t_container *container, char target);
+void     ft_isitrectangle(t_container *container);
+
+// Flood Fill Algorithm
 
 
-
+void     flood_fill(t_container *container);
+void     ft_duplicatemap(t_container *container);
+void     ft_getplayerposition(t_container *container);
+void     fill(t_container *container, int pos_x, int pos_y);
 
 #endif
