@@ -6,13 +6,13 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 18:26:37 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/27 11:41:17 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/04 11:38:19 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void ft_freeerrors(t_container *container)
+void ft_freeerrors(t_container *container, int flag)
 {
     int compteur;
 
@@ -22,6 +22,15 @@ void ft_freeerrors(t_container *container)
         free(container->map_holder[compteur++]);
     }
     free(container->map_holder);
+    if (flag)
+    {
+        compteur = 0;
+        while (container->flood_fill[compteur])
+    {
+        free(container->flood_fill[compteur++]);
+    }
+    free(container->flood_fill);
+    }
     exit (-1);
 }
 // take a line and go tourgh of it and checks if it contains only the allowed charachters

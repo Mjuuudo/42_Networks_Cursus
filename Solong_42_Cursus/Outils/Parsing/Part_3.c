@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:36:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/27 12:12:28 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/04 11:39:36 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void   ft_isitrectangle(t_container *container)
     if (container->game_height == width  || container->game_height > width)
     {
         ft_putstr("Map Must Be rectangular !\n");
-        ft_freeerrors(container);
+        ft_freeerrors(container, 0);
     }
     container->game_width =  width;
 }

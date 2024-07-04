@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:58:00 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/27 18:11:06 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/04 13:17:44 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int main(int argc, char **argv)
     ft_mapvalidation(&container);
     ft_isitrectangle(&container);
     flood_fill(&container);
- 
+    flood_fill_check(&container);
+
     
   
 }

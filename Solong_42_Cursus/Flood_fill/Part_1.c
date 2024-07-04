@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:43:16 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/06/27 18:11:10 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/04 12:25:11 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,17 @@ void  ft_duplicatemap(t_container *container)
 {
     int compteur;
     
-    container->flood_fill = malloc(sizeof(char *) * container->game_height);
+    container->flood_fill = malloc(sizeof(char *) * (container->game_height + 1));
     if (!container->flood_fill)
         return ;
     
     compteur = 0;
     while (container->map_holder[compteur])
     {
-        container->flood_fill[compteur] = malloc(sizeof(char) * ft_strlen(container->map_holder[compteur]));
-        if (!container->flood_fill)
-            return ;
-        container->flood_fill[compteur] = ft_strdup(container->map_holder[compteur]);
+       flood_fillcopy(container, compteur);
         compteur++;
     }
+    container->flood_fill[compteur] = NULL;
 }
 
 void ft_getplayerposition(t_container *container)
@@ -79,3 +77,13 @@ void fill(t_container *container, int pos_x, int pos_y)
         fill(container, pos_x + 1, pos_y);
     }
 }
+
+void flood_fill_check(t_container *container)
+{
+    if (!ft_mapvalidation_2(container))
+    {
+        ft_putstr("Attention the Map Is Not Playable! \n");
+        ft_freeerrors(container, 1);
+    }
+}
+
