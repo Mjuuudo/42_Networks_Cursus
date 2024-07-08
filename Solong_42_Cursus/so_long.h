@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:55:16 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/04 12:15:08 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/06 17:48:17 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int     ft_strlen_x(char *s);
 void	ft_putstr(char *s);
 int	    ft_strncmp(const char *str1, const char *str2, size_t n);
 char    *ft_strcpy(char *s1, char *s2);
+// char	*ft_strdup(char *src);
 
 
 // Parsing functions
@@ -66,17 +67,25 @@ int      ft_validatemapelement(char s);
 int      ft_checkrepetiton(t_container *container);
 int      ft_counter(t_container *container, char target);
 void     ft_isitrectangle(t_container *container);
-
+void ft_handlegnlerrors(t_container *container, char *line, int flag);
 // Flood Fill Algorithm
 
 
-void     flood_fill(t_container *container);
-void     ft_duplicatemap(t_container *container);
+void     flood_fill(t_container *container, char *map_name);
+void     ft_duplicatemap(t_container *container, char *map_name);
 void     ft_getplayerposition(t_container *container);
 void     fill(t_container *container, int pos_x, int pos_y);
 int      ft_mapvalidation_2(t_container *container);
 void     flood_fill_check(t_container *container);
 void     flood_fillcopy(t_container *container, int compteur);
+int      ft_resolutionfloodfill(char *s);
+
+// Game Starting Function
+
+void     ft_gameinit(t_container *container);
+void ft_putimginpx(t_container *container, char *type, int w, int h);
+int ft_drawmap(t_container *container);
+void ft_try(t_container *container, char *s, int h);
 
 
 

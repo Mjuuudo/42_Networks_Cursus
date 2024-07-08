@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:12:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/04 11:38:57 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/06 16:09:47 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int  ft_mapnamecheck(char *name)
         ft_putstr("The name You Entred Is In Wong Format Please Try Again !");
         exit (-1);
     }
-    
     return (1);
 }
 
@@ -52,6 +51,8 @@ void     ft_mapheight(t_container *container, char   *path)
         exit (-1);
     }
     container->game_height = length;
+    free(line);
+    get_next_line(-1000);
     close(fd);
 }
 
@@ -63,22 +64,25 @@ void    ft_mapcreation(t_container *container, char *map_name)
 
     ft_mapheight(container, map_name);
     container->map_holder = (char **)malloc(sizeof(char *) * (container->game_height + 1));
-    container->map_holder[container->game_height] = NULL;
     if (!container->map_holder)
-        exit (0);
+        return (free(container->map_holder));
     fd = open(map_name, O_RDWR);
     if (fd < 0)
-    {
-        ft_putstr("Wrong Map Path Please Check Your Input Field !\n");
-    }
+        return ;
     line = get_next_line(fd);
+    
+    if (!line)
+        return (free(line));
     compteur = 0;
     while (line)
     {
-        container->map_holder[compteur++] = line;
+        container->map_holder[compteur++] = ft_strdup(line);
+        free(line);
         line = get_next_line(fd);
     }
-    close (fd);
+    container->map_holder[compteur] = NULL;
+    free(line);
+    get_next_line(-1000);
 }
 
 void  ft_mapvalidation(t_container *container)

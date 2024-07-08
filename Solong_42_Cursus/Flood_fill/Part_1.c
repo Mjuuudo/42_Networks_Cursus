@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:43:16 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/04 12:25:11 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/06 16:10:19 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,40 @@
 
 
 
-void flood_fill(t_container *container)
+void flood_fill(t_container *container, char *map_name)
 {
     
-    ft_duplicatemap(container);
+    ft_duplicatemap(container, map_name);
     ft_getplayerposition(container);
     fill(container, container->player_pos_x, container->player_pos_y);
 }
 
-void  ft_duplicatemap(t_container *container)
+void  ft_duplicatemap(t_container *container, char *map_name)
 {
-    int compteur;
-    
-    container->flood_fill = malloc(sizeof(char *) * (container->game_height + 1));
+     int     fd;
+    int     compteur;
+    char    *line;
+
+    container->flood_fill = (char **)malloc(sizeof(char *) * (container->game_height + 1));
     if (!container->flood_fill)
+        return (free(container->flood_fill));
+    fd = open(map_name, O_RDWR);
+    if (fd < 0)
         return ;
+    line = get_next_line(fd);
     
+    if (!line)
+        return (free(line));
     compteur = 0;
-    while (container->map_holder[compteur])
+    while (line)
     {
-       flood_fillcopy(container, compteur);
-        compteur++;
+        container->flood_fill[compteur++] = ft_strdup(line);
+        free(line);
+        line = get_next_line(fd);
     }
     container->flood_fill[compteur] = NULL;
+    free(line);
+    get_next_line(-1000);
 }
 
 void ft_getplayerposition(t_container *container)
@@ -80,9 +91,23 @@ void fill(t_container *container, int pos_x, int pos_y)
 
 void flood_fill_check(t_container *container)
 {
+    int compteur;
+
     if (!ft_mapvalidation_2(container))
     {
         ft_putstr("Attention the Map Is Not Playable! \n");
+        compteur = 0;
+        while (container->map_holder[compteur])
+        {
+            free(container->map_holder[compteur++]);
+        }
+        free(container->map_holder);
+        compteur = 0;
+        while (container->flood_fill[compteur])
+        {
+            free(container->flood_fill[compteur++]);
+        }
+        free(container->flood_fill);
         ft_freeerrors(container, 1);
     }
 }
