@@ -15,13 +15,29 @@
 
 int add_prime_sum(int param){
     int compteur = 2;
-    int result = 0;
-
-    while (compteur <= param)
+    
+    if (param < 2)
+        return 0;
+    while (compteur * compteur <= param)
     {
-        if (compteur % compteur == 0 && compteur % 1 == 0)
-            result += compteur;
+        if (param % compteur == 0)
+            return 0;
         compteur++;
     }
-    return (result);
+    return (1);
+}
+
+int main()
+{
+    int i = 5;
+    int res  = 0;
+    
+    while (i > 0)
+    {
+        if (add_prime_sum(i))
+            res += i;
+        i--;
+    }
+    printf("%d",res);
+    return 0;
 }

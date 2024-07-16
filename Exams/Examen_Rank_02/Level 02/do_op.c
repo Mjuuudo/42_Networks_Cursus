@@ -8,9 +8,9 @@ int ft_atoi(char *str)
   int compteur = 0;
 
   if (str[compteur] == '-')
-  {   signe *= -1;
+      signe *= -1;
+  if (str[compteur] == '-' || str[compteur] == '+')
       compteur++;
-  }
    while (str[compteur] >= '0' && str[compteur] <= '9')
   {
       res *= 10;
