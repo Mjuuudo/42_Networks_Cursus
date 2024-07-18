@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:12:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/06 16:09:47 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:12:52 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ int  ft_mapnamecheck(char *name)
     int length;
  
     length = ft_strlen_x(name);
+    
     if (length <= 4 || ft_strncmp(name + length - 4, ".ber", 4) != 0)
     {
-        ft_putstr("The name You Entred Is In Wong Format Please Try Again !");
-        exit (-1);
+        ft_putstr("The name You Entred Is In Wong Format Please Try Again !\n");
+        exit (1);
     }
     return (1);
 }
@@ -36,7 +37,7 @@ void     ft_mapheight(t_container *container, char   *path)
     if (fd < 0)
     {
         ft_putstr("Wrong Map Path Please Check Your Input Field !\n");
-        exit (-1);
+        exit (1);
     }
     line = get_next_line(fd);
     while (line)
@@ -45,16 +46,14 @@ void     ft_mapheight(t_container *container, char   *path)
         length++;
         line = get_next_line(fd);
     }
-    if (length == 0)
-    {
-        ft_putstr("Please Check Your Map Content Its Empty !\n");
-        exit (-1);
-    }
+    ft_normv1(length);
     container->game_height = length;
     free(line);
     get_next_line(-1000);
     close(fd);
 }
+
+
 
 void    ft_mapcreation(t_container *container, char *map_name)
 {
@@ -120,7 +119,10 @@ int ft_checkmaplength(t_container *container)
 {
     int compteur;
     int length;
-
+    
+    container->players = 0;
+    container->exits = 0;
+    container->collectibeles = 0;
     length = ft_strlen_x(container->map_holder[0]);
     if (length > 1920)
         return (0);

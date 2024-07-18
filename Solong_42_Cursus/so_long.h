@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:55:16 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/06 17:48:17 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/18 12:17:58 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@
 #include "minilibx-linux/mlx.h"
 #include <unistd.h>
 #include "Outils/gnl/get_next_line.h"
+#include <X11/keysym.h>
 
 typedef struct s_container{
     void    *mlx_init;
     void    *mlx_window;
     int      window_height;
     int      window_width;
+    int      img_width;
+    int      img_height;
     void    *xpm_wall;
     void    *xpm_player;
     void    *xpm_coin;
@@ -67,7 +70,13 @@ int      ft_validatemapelement(char s);
 int      ft_checkrepetiton(t_container *container);
 int      ft_counter(t_container *container, char target);
 void     ft_isitrectangle(t_container *container);
-void ft_handlegnlerrors(t_container *container, char *line, int flag);
+void     ft_handlegnlerrors(t_container *container, char *line, int flag);
+void     init_members(t_container *container, char c);
+void     ft_filescheck();
+void ft_normv1(int length);
+void ft_screensizecheck(t_container *container);
+
+
 // Flood Fill Algorithm
 
 
@@ -83,9 +92,19 @@ int      ft_resolutionfloodfill(char *s);
 // Game Starting Function
 
 void     ft_gameinit(t_container *container);
-void ft_putimginpx(t_container *container, char *type, int w, int h);
-int ft_drawmap(t_container *container);
-void ft_try(t_container *container, char *s, int h);
+void     ft_putimginpx(t_container *container, char *type, int w, int h);
+int      ft_drawmap(t_container *container);
+void     ft_try(t_container *container, char *s, int h);
+
+// Game Event handling Functions
+
+int      input_reaction(int keysym, t_container *container);
+void     ft_moveforward(t_container *container);
+void     ft_movebackward(t_container *container);
+void     ft_moveright(t_container *container);
+void     ft_moveleft(t_container *container);
+int     ft_endgame(t_container *container);
+
 
 
 

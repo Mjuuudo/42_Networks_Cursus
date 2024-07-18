@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:43:16 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/06 16:10:19 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/18 11:43:38 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,23 @@ void fill(t_container *container, int pos_x, int pos_y)
 
 void flood_fill_check(t_container *container)
 {
-    int compteur;
+    // int compteur;
 
     if (!ft_mapvalidation_2(container))
     {
         ft_putstr("Attention the Map Is Not Playable! \n");
-        compteur = 0;
-        while (container->map_holder[compteur])
-        {
-            free(container->map_holder[compteur++]);
-        }
-        free(container->map_holder);
-        compteur = 0;
-        while (container->flood_fill[compteur])
-        {
-            free(container->flood_fill[compteur++]);
-        }
-        free(container->flood_fill);
+        // compteur = 0;
+        // while (container->map_holder[compteur])
+        // {
+        //     free(container->map_holder[compteur++]);
+        // }
+        // free(container->map_holder);
+        // compteur = 0;
+        // while (container->flood_fill[compteur])
+        // {
+        //     free(container->flood_fill[compteur++]);
+        // }
+        // free(container->flood_fill);
         ft_freeerrors(container, 1);
     }
 }
