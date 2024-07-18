@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:36:31 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/18 12:09:03 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:09:50 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,21 +87,21 @@ void ft_filescheck()
 {
     int fd;
 
-    fd = open("./Assets/coin.xpm",  O_RDONLY);
+    fd = open("./textures/coin.xpm",  O_RDONLY);
     if (fd == -1)
     {
         ft_putstr("One Of Xpm Files Is Missing\n");
         exit (1);
     }
     close(fd);
-    fd = open("./Assets/exit.xpm",  O_RDONLY);
+    fd = open("./textures/exit.xpm",  O_RDONLY);
     if (fd == -1)
     {
         ft_putstr("One Of Xpm Files Is Missing\n");
         exit (1);
     }
     close(fd);
-    fd = open("./Assets/floor_black.xpm",  O_RDONLY);
+    fd = open("./textures/floor_black.xpm",  O_RDONLY);
     if (fd == -1)
     {
         ft_putstr("One Of Xpm Files Is Missing\n");

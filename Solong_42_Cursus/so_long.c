@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:58:00 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/18 12:18:07 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:12:36 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void ft_filescheck_2()
 {
     int fd;
 
-    fd = open("./Assets/player.xpm",  O_RDONLY);
+    fd = open("./textures/player.xpm",  O_RDONLY);
     if (fd == -1)
     {
         ft_putstr("One Of Xpm Files Is Missing\n");
         exit (1);
     }
     close(fd);  
-    fd = open("./Assets/wall.xpm",  O_RDONLY);
+    fd = open("./textures/wall.xpm",  O_RDONLY);
     if (fd == -1)
     {
         ft_putstr("One Of Xpm Files Is Missing\n");
@@ -71,11 +71,3 @@ int main(int argc, char **argv)
     return (0);
     
 }
-
-
-/*
-    Starting By Re test some cases  with freeeing the array of map holder : lines length, lines content, wrong map naming, is the map rectangle or not,
-            does it contains at least the minimum element s requirement ;
-    then moving to flood fill algorithme with full testing for the map : try creating map by using the first map creatopn function, 
-            checking if the flood fill Algo is Applyed, check if all the map is colored ;
-*/

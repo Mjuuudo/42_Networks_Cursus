@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:22:53 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/18 11:44:18 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/07/18 13:09:18 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void  ft_gameinit(t_container *container)
                             container->window_width * 60, container->window_height * 60, "So_long");
     if (container->mlx_window == NULL)
         exit (1);
-    container->xpm_wall = mlx_xpm_file_to_image(container->mlx_init, "./Assets/wall.xpm",
+    container->xpm_wall = mlx_xpm_file_to_image(container->mlx_init, "./textures/wall.xpm",
                                          &container->img_width, &container->img_height);
 	container->xpm_floor = mlx_xpm_file_to_image(container->mlx_init,
-			"./Assets/floor_black.xpm", &container->img_width, &container->img_height);
+			"./textures/floor_black.xpm", &container->img_width, &container->img_height);
 	container->xpm_coin = mlx_xpm_file_to_image(container->mlx_init,
-			"./Assets/coin.xpm", &container->img_width, &container->img_height);
+			"./textures/coin.xpm", &container->img_width, &container->img_height);
 	container->xpm_player = mlx_xpm_file_to_image(container->mlx_init,
-			"./Assets/player.xpm", &container->img_width, &container->img_height);
+			"./textures/player.xpm", &container->img_width, &container->img_height);
 	container->xpm_exit = mlx_xpm_file_to_image(container->mlx_init,
-			"./Assets/exit.xpm", &container->img_width, &container->img_height);
+			"./textures/exit.xpm", &container->img_width, &container->img_height);
 	container->player_moves = 0;			
 }
 
