@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   Part_03.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 14:09:25 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/18 16:26:07 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/07/18 16:00:25 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/07/18 16:22:20 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../so_long.h"
+#include "../so_long.h"
 
-int	ft_strlen_x(char *s)
+void	rebuild(t_container *container)
 {
-	int	compteur;
-
-	compteur = 0;
-	while (s[compteur] && s[compteur] != '\n')
-	{
-		compteur++;
-	}
-	return (compteur);
+	ft_putstr("Player Moves :");
+	ft_putnbr(container->players++);
+	ft_putstr("\n");
+	mlx_clear_window(container->mlx_init, container->mlx_window);
+	ft_drawmap(container);
 }

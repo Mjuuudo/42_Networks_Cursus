@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/10 14:09:25 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/07/18 16:26:07 by abait-ou         ###   ########.fr       */
+/*   Created: 2024/07/18 16:03:26 by abait-ou          #+#    #+#             */
+/*   Updated: 2024/07/18 16:21:47 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int	ft_strlen_x(char *s)
+void	ft_putchar(char c)
 {
-	int	compteur;
+	write(1, &c, 1);
+}
 
-	compteur = 0;
-	while (s[compteur] && s[compteur] != '\n')
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
 	{
-		compteur++;
+		nb = -nb;
 	}
-	return (compteur);
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
 }

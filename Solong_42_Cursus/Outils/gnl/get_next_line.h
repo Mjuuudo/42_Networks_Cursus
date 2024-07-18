@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#   ifndef GET_NEXT_LINE_H
-#   define GET_NEXT_LINE_H
-#   ifndef BUFFER_SIZE
-#   define BUFFER_SIZE 3
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 3
 
-#   endif
+# endif
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -31,4 +31,4 @@ void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 
-#   endif
+#endif
