@@ -6,21 +6,25 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:27:24 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/09/12 11:44:14 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:08:13 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include <pthread.h>
-#include <sys/time.h>
+# include <sys/time.h>
 #include <stdio.h>
 #include <limits.h>
+#include <errno.h>
+
+#define MAX_PHILO 200
 
 
 
 typedef struct s_table t_table;
 typedef enum   s_enum  t_status;
+
 typedef struct s_fork
 {
     int fork_id;
@@ -30,11 +34,12 @@ typedef struct s_fork
 typedef struct s_philosopher
 {
     int       philo_id;
-    pthread_t philosopher;
+    pthread_t thread;
     t_fork    *first_fork;
     t_fork    *seconde_fork;
     long      meals_number;
     int       flag_full_or_not;
+    long      last_meal;
     t_table   *table;
 }              t_philosopher;
 
@@ -42,14 +47,16 @@ typedef struct s_philosopher
 struct s_table
 {
     long    number_of_philos;
+    pthread_mutex_t print_mutex;
+    int current_print_id;
     long    time_to_die;
     long    time_to_eat;
     long    time_to_sleep;
     long    meals_left;
     long    start_simulation;
     int     flag_end_simulation;
-    t_fork        *forks;
-    t_philosopher *philos;
+    t_fork        forks[MAX_PHILO];
+    t_philosopher philos[MAX_PHILO];
 };
 
 enum s_enum
@@ -57,7 +64,6 @@ enum s_enum
   LOCK,
   UNLOCK,
   INIT,
-  DESTROY,
   DETACH,
   DESTROY  
 };
@@ -72,9 +78,23 @@ void       ft_parsinput(t_table *table, char **argv);
 
 void        ft_caseexite01();
 
+// Init Members Functions Prototypes
+
+void  ft_inittable(t_table *table);
+void *ft_routine(void *arg);
+void ft_forksinit(t_table *table);
+void ft_threadjoin(t_table *table);
+void  ft_initthreads( t_table *table);
+
 
 // Outils  Prototypes  Functions
 
 int         ft_isspace(char c);
 int         ft_isdigit(char c);
 long long	ft_atol(const char *str);
+int	        ft_usleep(long int time);
+long        ft_gettime(void);
+
+// Dinner Simulation Functions
+
+long int	get_time(void);

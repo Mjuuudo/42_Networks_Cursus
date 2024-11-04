@@ -1,7 +1,7 @@
 COMPILER = cc
 NAME	 = philosopher
-SRCS 	 = philosophers.c Parsing/Part_01.c Outils/Part_01.c Error_Handling/Part_01.c
-
+SRCS 	 = philosophers.c Parsing/Part_01.c Outils/Part_01.c Error_Handling/Part_01.c\
+			Data_init/Part_01.c Dinner_simu/routine.c
 
 
 OBJS     = ${SRCS:.c=.o}

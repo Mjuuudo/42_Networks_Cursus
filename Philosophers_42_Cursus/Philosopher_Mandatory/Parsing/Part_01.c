@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:11:32 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/09/10 19:12:55 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/03 18:12:39 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ static void ft_rangecheck(t_table *table)
 }
 static void ft_checktimestamps(t_table *table)
 {
-    if (table->time_to_die >=6000)
+    if (table->time_to_die <=6000)
         ft_caseexite01(); 
-    if (table->time_to_eat >=6000)
+    if (table->time_to_eat <=6000)
         ft_caseexite01();
-    if (table->time_to_sleep >=6000)
+    if (table->time_to_sleep <=6000)
         ft_caseexite01();
 }
 
@@ -68,9 +68,14 @@ void   ft_parsinput(t_table *table, char **argv)
     table->time_to_eat      = ft_atol(argv[3]) * 1e3;
     table->time_to_sleep    = ft_atol(argv[4]) * 1e3;
     if (argv[5])
-        table->meals_left   = ft_atol(argv[5]);
+        table->meals_left   = ft_atol(argv[5]) * 1e3;
     else
         table->meals_left   = -1;
+    if (table->number_of_philos == 0 || table->number_of_philos > 200)
+        ft_caseexite01();
+    table->start_simulation = get_time();
+    table->flag_end_simulation = 0;
     ft_rangecheck(table);
     ft_checktimestamps(table);
+    // printf("%ld\n", table->time_to_eat);
 }
