@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:44:27 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/10/30 19:01:52 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/07 17:11:41 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
         // Validating and Parsing The Input
         ft_parsinput(&table, argv);
         // Seconde Step INIT The Struct Elements
-        ft_inittable(&table);
+        ft_inittable(&table, &monitor);
 
         // printf ("%ld %ld %ld %ld %ld", table.number_of_philos, table.time_to_die, 
         // table.time_to_eat, table.time_to_sleep, table.meals_left);

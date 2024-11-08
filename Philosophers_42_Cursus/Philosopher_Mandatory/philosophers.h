@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:27:24 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/03 18:08:13 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/07 21:21:48 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_philosopher
     int       philo_id;
     pthread_t thread;
     t_fork    *first_fork;
-    t_fork    *seconde_fork;
+    t_fork    *second_fork;
     long      meals_number;
     int       flag_full_or_not;
     long      last_meal;
@@ -55,6 +55,7 @@ struct s_table
     long    meals_left;
     long    start_simulation;
     int     flag_end_simulation;
+    int     ready_or_not;
     t_fork        forks[MAX_PHILO];
     t_philosopher philos[MAX_PHILO];
 };
@@ -80,11 +81,12 @@ void        ft_caseexite01();
 
 // Init Members Functions Prototypes
 
-void  ft_inittable(t_table *table);
+void *ft_monitor(void *arg);
+void ft_inittable(t_table *table, pthread_t *monitor);
+void ft_initforks(t_table *table);
+void ft_destroyforks(t_table *table);
 void *ft_routine(void *arg);
-void ft_forksinit(t_table *table);
 void ft_threadjoin(t_table *table);
-void  ft_initthreads( t_table *table);
 
 
 // Outils  Prototypes  Functions
@@ -92,8 +94,8 @@ void  ft_initthreads( t_table *table);
 int         ft_isspace(char c);
 int         ft_isdigit(char c);
 long long	ft_atol(const char *str);
-int	        ft_usleep(long int time);
 long        ft_gettime(void);
+void	    ft_usleep(long int time_to_wait);
 
 // Dinner Simulation Functions
 

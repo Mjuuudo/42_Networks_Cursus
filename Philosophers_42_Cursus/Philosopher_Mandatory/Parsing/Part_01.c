@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:11:32 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/03 18:12:39 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:11:29 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,17 @@ static void ft_checktimestamps(t_table *table)
         ft_caseexite01();
 }
 
+static void ft_lastmeal(t_table *table)
+{
+    int counter;
+
+    counter = 0;
+    while (counter < table->number_of_philos)
+    {
+        table->philos[counter].last_meal = get_time();
+        counter++;
+    }
+}
 void   ft_parsinput(t_table *table, char **argv)
 {
     int counter;
@@ -77,5 +88,7 @@ void   ft_parsinput(t_table *table, char **argv)
     table->flag_end_simulation = 0;
     ft_rangecheck(table);
     ft_checktimestamps(table);
-    // printf("%ld\n", table->time_to_eat);
+    ft_lastmeal(table);
+    table->ready_or_not = 0;
 }
+

@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:21:18 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/02 21:00:44 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/07 17:06:47 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,22 @@ long int	get_time(void)
 	long int		time_in_micro;
 
 	gettimeofday(&tv, NULL);
-	time_in_micro = (tv.tv_sec * 1000000) + tv.tv_usec;
+	time_in_micro = tv.tv_usec;
 	return (time_in_micro);
 }
 
 
-int	ft_usleep(long int time)
+void	ft_usleep(long int time_to_wait)
 {
-	long int	start_time;
+	long int	start;
+	long int	current;
 
-	// printf("time %ld\n", time);
-	start_time = get_time();
-	while ((get_time() - start_time) < time)
-		usleep(150);
-	return (1);
+	start = get_time();
+	while (1)
+	{
+		current = get_time();
+		if ((current - start) >= time_to_wait)
+			return ;
+		usleep(100);
+	}
 }
