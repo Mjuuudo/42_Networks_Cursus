@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:11:32 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/07 17:11:29 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:36:31 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void ft_validateinput(char *string)
 }
 static void ft_rangecheck(t_table *table)
 {
-    if (table->number_of_philos >= INT_MAX 
-           || table->number_of_philos <= INT_MIN)
+    if (table->philos_number >= INT_MAX 
+           || table->philos_number <= INT_MIN)
         ft_caseexite01();
     if (table->time_to_die >= INT_MAX 
            || table->time_to_die <= INT_MIN)
@@ -42,8 +42,8 @@ static void ft_rangecheck(t_table *table)
     if (table->time_to_sleep >= INT_MAX 
            || table->time_to_sleep <= INT_MIN)
         ft_caseexite01();   
-    if (table->meals_left >= INT_MAX 
-           || table->meals_left <= INT_MIN)
+    if (table->meals_number >= INT_MAX 
+           || table->meals_number <= INT_MIN)
         ft_caseexite01();         
 }
 static void ft_checktimestamps(t_table *table)
@@ -56,17 +56,17 @@ static void ft_checktimestamps(t_table *table)
         ft_caseexite01();
 }
 
-static void ft_lastmeal(t_table *table)
-{
-    int counter;
+// static void ft_lastmeal(t_table *table)
+// {
+//     int counter;
 
-    counter = 0;
-    while (counter < table->number_of_philos)
-    {
-        table->philos[counter].last_meal = get_time();
-        counter++;
-    }
-}
+//     counter = 0;
+//     while (counter < table->philos_number)
+//     {
+//         table->philos[counter].last_meal = get_time();
+//         counter++;
+//     }
+// }
 void   ft_parsinput(t_table *table, char **argv)
 {
     int counter;
@@ -74,21 +74,19 @@ void   ft_parsinput(t_table *table, char **argv)
     counter = 1;
     while (argv[counter])
         ft_validateinput(argv[counter++]);
-    table->number_of_philos = ft_atol(argv[1]);
-    table->time_to_die      = ft_atol(argv[2]) * 1e3;
-    table->time_to_eat      = ft_atol(argv[3]) * 1e3;
-    table->time_to_sleep    = ft_atol(argv[4]) * 1e3;
+    table->philos_number = ft_atol(argv[1]);
+    if (table->philos_number <= 0 || table->philos_number > 200)
+        exit (0);
+    table->time_to_die   = ft_atol(argv[2]);
+    table->time_to_eat   = ft_atol(argv[3]);
+    table->time_to_sleep = ft_atol(argv[4]);
     if (argv[5])
-        table->meals_left   = ft_atol(argv[5]) * 1e3;
+        table->meals_number = ft_atol(argv[5]);
     else
-        table->meals_left   = -1;
-    if (table->number_of_philos == 0 || table->number_of_philos > 200)
-        ft_caseexite01();
-    table->start_simulation = get_time();
-    table->flag_end_simulation = 0;
-    ft_rangecheck(table);
-    ft_checktimestamps(table);
-    ft_lastmeal(table);
-    table->ready_or_not = 0;
+        table->meals_number = -1;
+    table->end_simu = 0;
+    table->start_simu = get_time();
+    // ft_rangecheck(table);
+    // ft_checktimestamps(table);
 }
 

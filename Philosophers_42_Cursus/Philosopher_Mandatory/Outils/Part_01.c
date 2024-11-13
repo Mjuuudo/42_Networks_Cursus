@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:21:18 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/07 17:06:47 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:43:48 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,47 @@ long long	ft_atol(const char *str)
 	return (number * sign);
 }
 
-long int	get_time(void)
+size_t	get_time(void)
 {
-	struct timeval	tv;
-	long int		time_in_micro;
+	struct timeval	time;
 
-	gettimeofday(&tv, NULL);
-	time_in_micro = tv.tv_usec;
-	return (time_in_micro);
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+long long	ft_timestamp(t_table *table)
+{
+	return (get_time() - table->start_simu);
 }
 
 
-void	ft_usleep(long int time_to_wait)
+int	ft_usleep(size_t milliseconds)
 {
-	long int	start;
-	long int	current;
+	size_t	start;
 
 	start = get_time();
-	while (1)
-	{
-		current = get_time();
-		if ((current - start) >= time_to_wait)
-			return ;
-		usleep(100);
-	}
+	while ((get_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
+
+int ft_deathcheck(t_philo *philo)
+{
+    pthread_mutex_lock(philo->death_lock);
+    if (philo->table->dead != 0)
+    {
+        pthread_mutex_unlock(philo->death_lock);
+        return (1);
+    }
+    pthread_mutex_unlock(philo->death_lock);
+    return (0);
+}
+
+void print_messag(long time, int id, char *str, t_philo *philo)
+{
+	pthread_mutex_lock(philo->print_lock);
+	if (!ft_deathcheck(philo))
+		printf("%ld %d %s\n", time, id, str);
+	pthread_mutex_unlock(philo->print_lock);
+	
 }

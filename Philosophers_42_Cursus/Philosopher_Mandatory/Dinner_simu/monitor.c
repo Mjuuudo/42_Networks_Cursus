@@ -6,36 +6,83 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:02:18 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/07 20:51:06 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:52:57 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-void *ft_monitor(void *arg)
+static int deadornot(t_table *table, int counter)
 {
-    t_table *table;
-    int     counter;
-
-    table = (t_table *)arg;
-    while (!table->ready_or_not);
-    ft_usleep(200);
-    counter = 0;
-    while (1)
+    pthread_mutex_lock(&table->eat);
+    if ((get_time() - table->philos[counter].last_meal 
+            >= table->time_to_die) 
+                && table->philos[counter].eating == 0)
     {
-        while (counter < table->number_of_philos)
-        {
-            if ((get_time() - table->philos[counter].last_meal) > table->time_to_die)
-            {
-                pthread_mutex_lock(&table->print_mutex);
-                table->flag_end_simulation = 1;
-                printf("%d Died\n", counter + 1);
-                pthread_mutex_unlock(&table->print_mutex);
-            }
-            counter++;
-        }
-        if (table->flag_end_simulation)
-            break ;
-        counter = 0;
-    }
+        pthread_mutex_unlock(&table->eat);
+        
+        return (1);
+    }  
+    pthread_mutex_unlock(&table->eat);
+    return (0);
 }
+
+static int check_death(t_table *table) {
+    int counter = 0;
+    
+    while (counter < table->philos_number) {
+        if (deadornot(table, counter)) {
+            pthread_mutex_lock(&table->death);
+            table->dead = 1;
+            table->end_simu = 1;
+            printf("%lld %d is died\n", ft_timestamp(table), table->philos[counter].philo_id);
+            pthread_mutex_unlock(&table->death);
+            return 1;
+        }
+        counter++;
+    }
+    return 0;
+}
+
+static int check_full(t_table *table)
+{
+    int counter;
+    int philos;
+    
+    if (table->meals_number == -1)
+        return (0);
+    philos = 0;
+    counter = 0;
+    while (counter < table->philos_number)
+    {
+        if (table->philos[counter].meals_eaten == table->meals_number)
+            philos++;
+        counter++;
+    }
+    if (philos == table->philos_number)
+        return (1);
+    return (0);
+}
+
+
+void *ft_monitor(void *arg) {
+    t_table *table = (t_table *)arg;
+    ft_usleep(2);
+    while (1) {
+       
+        
+        if (check_death(table) == 1 || check_full(table) == 1) {
+            break;
+        }
+        ft_usleep(1);
+    }
+    // Ensure all philosophers see the death state
+    pthread_mutex_lock(&table->death);
+    table->dead = 1;
+    table->end_simu = 1;
+    pthread_mutex_unlock(&table->death);
+    
+    return NULL;
+}
+
+

@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:27:24 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/07 21:21:48 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/13 17:45:18 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,76 +27,72 @@ typedef enum   s_enum  t_status;
 
 typedef struct s_fork
 {
-    int fork_id;
+    int             fork_id;
     pthread_mutex_t fork;
 }              t_fork;
 
-typedef struct s_philosopher
+typedef struct s_philo
 {
-    int       philo_id;
-    pthread_t thread;
-    t_fork    *first_fork;
-    t_fork    *second_fork;
-    long      meals_number;
-    int       flag_full_or_not;
-    long      last_meal;
-    t_table   *table;
-}              t_philosopher;
+    int             philo_id;
+    int             meals_eaten;
+    long            last_meal;
+    int             eating;
+    t_table         *table;
+    pthread_t       thread;
+    pthread_mutex_t *first_fork;
+    pthread_mutex_t *seconde_fork;
+    pthread_mutex_t *death_lock;
+    pthread_mutex_t *eat_lock;
+    pthread_mutex_t *print_lock;
+}               t_philo;
 
-
-struct s_table
+typedef struct s_table
 {
-    long    number_of_philos;
-    pthread_mutex_t print_mutex;
-    int current_print_id;
-    long    time_to_die;
-    long    time_to_eat;
-    long    time_to_sleep;
-    long    meals_left;
-    long    start_simulation;
-    int     flag_end_simulation;
-    int     ready_or_not;
-    t_fork        forks[MAX_PHILO];
-    t_philosopher philos[MAX_PHILO];
-};
+    int             philos_number;
+    long            time_to_eat;
+    long            time_to_sleep;
+    long            time_to_die;
+    int             meals_number;
+    long            start_simu;
+    int             end_simu;
+    int             dead;
+    pthread_mutex_t death;
+    pthread_mutex_t eat;
+    pthread_mutex_t print;
+    t_philo         philos[MAX_PHILO];
+    t_fork          forks[MAX_PHILO];
+}              t_table;
 
-enum s_enum
-{
-  LOCK,
-  UNLOCK,
-  INIT,
-  DETACH,
-  DESTROY  
-};
+// Init Funtcions Prototype
+
+void            ft_parsinput(t_table *table, char **argv);
+
+// Outils Functions Prototype 
 
 
-// Parsing Prototypes Functions
-
-void       ft_parsinput(t_table *table, char **argv);
-
-
-// Error Handling Pototypes Functions
-
-void        ft_caseexite01();
-
-// Init Members Functions Prototypes
-
-void *ft_monitor(void *arg);
-void ft_inittable(t_table *table, pthread_t *monitor);
-void ft_initforks(t_table *table);
-void ft_destroyforks(t_table *table);
-void *ft_routine(void *arg);
-void ft_threadjoin(t_table *table);
+long long	    ft_atol(const char *str);
+int             ft_isdigit(char c);
+int             ft_isspace(char c);
+int	            ft_usleep(size_t milliseconds);
+size_t	        get_time(void);
+void            print_messag(long time, int id, char *str, t_philo *philo);     
+long long	    ft_timestamp(t_table *table);   
 
 
-// Outils  Prototypes  Functions
+// Data Init (For Forks And Threads) Functios Prototype
 
-int         ft_isspace(char c);
-int         ft_isdigit(char c);
-long long	ft_atol(const char *str);
-long        ft_gettime(void);
-void	    ft_usleep(long int time_to_wait);
+void            ft_inittable(t_table *table);
+void            ft_forksinit(t_table *table);
+void            ft_philosinit(t_table *table);
 
-// Dinner Simulation Functions
+// Dinner Simulation Functions Prototypes
 
-long int	get_time(void);
+void            ft_dinner(t_table *table);
+void            *ft_routine(void *arg);
+void            *ft_monitor(void *arg);
+int             ft_deathcheck(t_philo *philo);
+void            ft_mutexdestroy(t_table *table);   
+
+// Error Management Fucntions Prototypes
+
+void            ft_caseexite01();
