@@ -12,9 +12,8 @@
 
 #include "../philosophers.h"
 
-void ft_caseexite01()
+void	ft_caseexite01(void)
 {
-    printf("Error !\nCheck Your Argument Formats\n");
-    exit(1);
+	printf("Error !\nCheck Your Argument Formats\n");
+	exit(1);
 }
-
