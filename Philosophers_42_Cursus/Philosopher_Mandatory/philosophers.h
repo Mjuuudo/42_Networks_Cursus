@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:27:24 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/13 18:43:42 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:43:45 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_philo
 	int					meals_eaten;
 	long				last_meal;
 	int					eating;
+	int 				attach;
 	t_table				*table;
 	pthread_t			thread;
 	pthread_mutex_t		*first_fork;
@@ -46,7 +47,7 @@ typedef struct s_philo
 
 typedef struct s_table
 {
-	int					philos_number;
+	long				philos_number;
 	long				time_to_eat;
 	long				time_to_sleep;
 	long				time_to_die;
@@ -70,7 +71,7 @@ void					ft_parsinput(t_table *table, char **argv);
 long long				ft_atol(const char *str);
 int						ft_isdigit(char c);
 int						ft_isspace(char c);
-int						ft_usleep(size_t milliseconds);
+int						ft_usleep(size_t milliseconds, t_philo *philo);
 size_t					get_time(void);
 void					print_messag(long time, int id, char *str,
 							t_philo *philo);
@@ -98,3 +99,4 @@ int						eat(t_philo *philo);
 // Error Management Fucntions Prototypes
 
 void					ft_caseexite01(void);
+void 					diedexit(t_philo *philo);

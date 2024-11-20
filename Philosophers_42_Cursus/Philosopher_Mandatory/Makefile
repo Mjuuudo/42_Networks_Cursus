@@ -6,7 +6,7 @@ SRCS 	 = philosophers.c Parsing/Part_01.c Outils/Part_01.c Error_Handling/Part_0
 
 
 OBJS     = ${SRCS:.c=.o}
-FLAGS    = -Wall -Werror -Wextra
+FLAGS    = -Wall -Werror -Wextra -fsanitize=thread -pthread
 
 all: $(NAME)
 

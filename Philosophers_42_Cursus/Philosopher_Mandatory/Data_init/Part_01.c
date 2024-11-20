@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:16:45 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/13 18:51:18 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/20 17:09:21 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,14 @@ void	ft_philosinit(t_table *table)
 		table->philos[counter].eat_lock = &table->eat;
 		table->philos[counter].print_lock = &table->print;
 		table->philos[counter].first_fork = &table->forks[counter].fork;
-		if (counter == 0)
-		{
-			table->philos[counter].seconde_fork = &table->forks
-			[table->philos_number - 1].fork;
-		}
-		else
-			table->philos[counter].seconde_fork = &table->forks[counter
-				- 1].fork;
+        table->philos[counter].seconde_fork = 
+            &table->forks[(counter + 1) % table->philos_number].fork;
 		table->philos[counter].table = table;
 		table->philos[counter].eating = 0;
 		counter++;
 	}
+
+	
 }
 
 void	ft_inittable(t_table *table)

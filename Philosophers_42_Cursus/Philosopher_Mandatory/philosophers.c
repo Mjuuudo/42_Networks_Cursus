@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:44:27 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/13 18:28:09 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:16:41 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		ft_parsinput(&table, argv);
 		ft_inittable(&table);
 		ft_dinner(&table);
-		ft_mutexdestroy(&table);
+		// ft_mutexdestroy(&table);
 	}
 	else
 		printf("Error !\nPlease Use The Arguments In A Correct Way !\n");

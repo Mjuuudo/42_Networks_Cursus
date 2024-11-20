@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:02:18 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/13 18:40:42 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:04:24 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void	*ft_monitor(void *arg)
 	t_table	*table;
 
 	table = (t_table *)arg;
-	ft_usleep(2);
+	ft_usleep(2, &table->philos[0]);
 	while (1)
 	{
 		if (check_death(table) == 1 || check_full(table) == 1)
 			break ;
-		ft_usleep(1);
+			ft_usleep(5, &table->philos[0]);
 	}
 	pthread_mutex_lock(&table->death);
 	table->dead = 1;

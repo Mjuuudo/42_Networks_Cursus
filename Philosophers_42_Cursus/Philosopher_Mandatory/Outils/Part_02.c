@@ -6,31 +6,37 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:28:49 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/13 18:30:07 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:02:45 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_usleep(size_t milliseconds)
+int	ft_usleep(size_t milliseconds ,t_philo *philo)
 {
 	size_t	start;
 
 	start = get_time();
 	while ((get_time() - start) < milliseconds)
+	{
+		// pthread_mutex_lock(philo->death_lock);
+		if (philo->table->dead == 1)
+			return ( 1);
+		// pthread_mutex_unlock(philo->death_lock);
 		usleep(500);
+	}
 	return (0);
 }
 
 int	ft_deathcheck(t_philo *philo)
 {
-	pthread_mutex_lock(philo->death_lock);
+	// pthread_mutex_lock(philo->death_lock);
 	if (philo->table->dead != 0)
 	{
-		pthread_mutex_unlock(philo->death_lock);
+		// pthread_mutex_unlock(philo->death_lock);
 		return (1);
 	}
-	pthread_mutex_unlock(philo->death_lock);
+	// pthread_mutex_unlock(philo->death_lock);
 	return (0);
 }
 
