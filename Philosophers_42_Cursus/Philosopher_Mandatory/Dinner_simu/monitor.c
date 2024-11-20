@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:02:18 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/20 16:04:24 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/20 20:42:46 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ static int	check_death(t_table *table)
 		if (deadornot(table, counter))
 		{
 			pthread_mutex_lock(&table->death);
+			pthread_mutex_lock(&table->print);
 			table->dead = 1;
 			table->end_simu = 1;
 			printf("%lld %d is died\n", ft_timestamp(table),
 				table->philos[counter].philo_id);
+			pthread_mutex_unlock(&table->print);
 			pthread_mutex_unlock(&table->death);
 			return (1);
 		}
@@ -77,7 +79,7 @@ void	*ft_monitor(void *arg)
 	{
 		if (check_death(table) == 1 || check_full(table) == 1)
 			break ;
-			ft_usleep(5, &table->philos[0]);
+		ft_usleep(5, &table->philos[0]);
 	}
 	pthread_mutex_lock(&table->death);
 	table->dead = 1;

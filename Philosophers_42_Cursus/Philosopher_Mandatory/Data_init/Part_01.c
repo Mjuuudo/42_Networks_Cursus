@@ -45,14 +45,12 @@ void	ft_philosinit(t_table *table)
 		table->philos[counter].eat_lock = &table->eat;
 		table->philos[counter].print_lock = &table->print;
 		table->philos[counter].first_fork = &table->forks[counter].fork;
-        table->philos[counter].seconde_fork = 
-            &table->forks[(counter + 1) % table->philos_number].fork;
+		table->philos[counter].seconde_fork = &table->forks[(counter + 1)
+			% table->philos_number].fork;
 		table->philos[counter].table = table;
 		table->philos[counter].eating = 0;
 		counter++;
 	}
-
-	
 }
 
 void	ft_inittable(t_table *table)

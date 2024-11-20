@@ -35,7 +35,7 @@ typedef struct s_philo
 	int					meals_eaten;
 	long				last_meal;
 	int					eating;
-	int 				attach;
+	int					attach;
 	t_table				*table;
 	pthread_t			thread;
 	pthread_mutex_t		*first_fork;
@@ -99,4 +99,4 @@ int						eat(t_philo *philo);
 // Error Management Fucntions Prototypes
 
 void					ft_caseexite01(void);
-void 					diedexit(t_philo *philo);
+void					diedexit(t_philo *philo);

@@ -18,7 +18,7 @@ void	ft_caseexite01(void)
 	exit(1);
 }
 
-void diedexit(t_philo *philo)
+void	diedexit(t_philo *philo)
 {
 	if (philo->attach == 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:11:32 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/13 18:52:21 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/20 20:56:03 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,4 @@ void	ft_parsinput(t_table *table, char **argv)
 	table->end_simu = 0;
 	table->start_simu = get_time();
 	ft_rangecheck(table);
-	// ft_checktimestamps(table);
 }
