@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:42:28 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/20 20:54:09 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:28:24 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@ int	ft_takeforks(t_philo *philo)
 	pthread_mutex_t	*first_fork;
 	pthread_mutex_t	*second_fork;
 
-	if (philo->first_fork < philo->seconde_fork)
-		(first_fork = philo->first_fork,
-                second_fork = philo->seconde_fork);
-	else
-		(first_fork = philo->seconde_fork, 
-            second_fork = philo->first_fork);
+	ft_select_forks(philo, &first_fork, &second_fork);
 	(pthread_mutex_lock(first_fork), philo->attach = 1);
 	print_messag(ft_timestamp(philo->table), philo->philo_id,
 		"Right Fork Taken 🍽️", philo);
@@ -44,8 +39,9 @@ int	ft_takeforks(t_philo *philo)
 
 void	ft_releaseforks(t_philo *philo)
 {
-	pthread_mutex_t *first_fork, *second_fork;
-	// Use same ordering logic for release
+	pthread_mutex_t	*first_fork;
+	pthread_mutex_t	*second_fork;
+
 	if (philo->first_fork < philo->seconde_fork)
 	{
 		first_fork = philo->first_fork;
@@ -56,6 +52,7 @@ void	ft_releaseforks(t_philo *philo)
 		first_fork = philo->seconde_fork;
 		second_fork = philo->first_fork;
 	}
+	ft_select_forks(philo, &first_fork, &second_fork);
 	pthread_mutex_unlock(first_fork);
 	philo->attach = 0;
 	print_messag(ft_timestamp(philo->table), philo->philo_id,
@@ -76,7 +73,7 @@ int	ft_sleep(t_philo *philo)
 	pthread_mutex_unlock(philo->death_lock);
 	print_messag(ft_timestamp(philo->table), philo->philo_id,
 		"Is Sleeping ⋆｡°•☁️", philo);
-	if (ft_usleep(philo->table->time_to_eat, philo))
+	if (ft_usleep(philo->table->time_to_sleep, philo))
 		return (0);
 	return (1);
 }

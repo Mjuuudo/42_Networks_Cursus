@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:02:18 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/20 20:42:46 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/24 20:43:52 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static int	deadornot(t_table *table, int counter)
 {
 	pthread_mutex_lock(&table->eat);
-	if ((get_time() - table->philos[counter].last_meal >= table->time_to_die)
+	if (((long int)(get_time()
+			- table->philos[counter].last_meal) > table->time_to_die)
 		&& table->philos[counter].eating == 0)
 	{
 		pthread_mutex_unlock(&table->eat);
@@ -58,12 +59,14 @@ static int	check_full(t_table *table)
 		return (0);
 	philos = 0;
 	counter = 0;
+	pthread_mutex_lock(&table->eat);
 	while (counter < table->philos_number)
 	{
-		if (table->philos[counter].meals_eaten == table->meals_number)
+		if (table->philos[counter].meals_eaten >= table->meals_number)
 			philos++;
 		counter++;
 	}
+	pthread_mutex_unlock(&table->eat);
 	if (philos == table->philos_number)
 		return (1);
 	return (0);
@@ -74,12 +77,11 @@ void	*ft_monitor(void *arg)
 	t_table	*table;
 
 	table = (t_table *)arg;
-	ft_usleep(2, &table->philos[0]);
+	ft_usleep(1, &table->philos[0]);
 	while (1)
 	{
 		if (check_death(table) == 1 || check_full(table) == 1)
 			break ;
-		ft_usleep(5, &table->philos[0]);
 	}
 	pthread_mutex_lock(&table->death);
 	table->dead = 1;

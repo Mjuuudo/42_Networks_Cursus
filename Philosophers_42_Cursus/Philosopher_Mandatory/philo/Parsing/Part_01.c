@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 13:11:32 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/20 20:56:03 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/24 20:37:02 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,6 @@ static void	ft_rangecheck(t_table *table)
 	if (table->time_to_sleep >= INT_MAX || table->time_to_sleep <= INT_MIN)
 		ft_caseexite01();
 	if (table->meals_number >= INT_MAX || table->meals_number <= INT_MIN)
-		ft_caseexite01();
-}
-
-static void	ft_checktimestamps(t_table *table)
-{
-	if (table->time_to_die <= 6000)
-		ft_caseexite01();
-	if (table->time_to_eat <= 6000)
-		ft_caseexite01();
-	if (table->time_to_sleep <= 6000)
 		ft_caseexite01();
 }
 

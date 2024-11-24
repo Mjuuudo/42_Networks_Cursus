@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:41:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/11/20 20:54:34 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/24 20:43:07 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->philo_id % 2 == 0)
-		ft_usleep(60, philo);
+		ft_usleep(1, philo);
 	while (1)
 	{
 		pthread_mutex_lock(philo->death_lock);

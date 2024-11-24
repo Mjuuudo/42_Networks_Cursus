@@ -6,7 +6,7 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:44:27 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/20 20:58:50 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/21 14:30:12 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,3 @@ int	main(int argc, char **argv)
 		printf("Error !\nPlease Use The Arguments In A Correct Way !\n");
 	return (0);
 }
-
-// Re Rule For Make File / Norminette / Folder Name / Check Subject For Exec File Name

@@ -6,18 +6,18 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:28:49 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/20 20:55:37 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/24 20:40:28 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_usleep(size_t milliseconds, t_philo *philo)
+int	ft_usleep(long long milliseconds, t_philo *philo)
 {
 	size_t	start;
 
 	start = get_time();
-	while ((get_time() - start) < milliseconds)
+	while ((long long)(get_time() - start) < milliseconds)
 	{
 		if (philo->table->dead == 1)
 			return (1);
@@ -49,4 +49,20 @@ void	print_messag(long time, int id, char *str, t_philo *philo)
 long long	ft_timestamp(t_table *table)
 {
 	return (get_time() - table->start_simu);
+}
+
+int	ft_select_forks(t_philo *philo, pthread_mutex_t **first_fork,
+		pthread_mutex_t **second_fork)
+{
+	if (philo->first_fork < philo->seconde_fork)
+	{
+		*first_fork = philo->first_fork;
+		*second_fork = philo->seconde_fork;
+	}
+	else
+	{
+		*first_fork = philo->seconde_fork;
+		*second_fork = philo->first_fork;
+	}
+	return (1);
 }
