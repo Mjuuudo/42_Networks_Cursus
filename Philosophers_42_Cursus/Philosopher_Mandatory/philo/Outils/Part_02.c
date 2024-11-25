@@ -6,33 +6,46 @@
 /*   By: abait-ou <abait-ou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:28:49 by abait-ou          #+#    #+#             */
-/*   Updated: 2024/11/24 20:40:28 by abait-ou         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:02:09 by abait-ou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
+
+static int prob(t_philo *philo)
+{
+	pthread_mutex_lock(philo->death_lock);
+	if (philo->table->dead == 1)
+			return (pthread_mutex_unlock(philo->death_lock), 1);
+	pthread_mutex_unlock(philo->death_lock);
+	return (0);
+}
 
 int	ft_usleep(long long milliseconds, t_philo *philo)
 {
 	size_t	start;
 
 	start = get_time();
+	
 	while ((long long)(get_time() - start) < milliseconds)
 	{
-		if (philo->table->dead == 1)
+		if (prob(philo))
 			return (1);
 		usleep(500);
 	}
+	
 	return (0);
 }
 
 int	ft_deathcheck(t_philo *philo)
 {
+	pthread_mutex_lock(philo->death_lock);
 	if (philo->table->dead != 0)
 	{
 		pthread_mutex_unlock(philo->death_lock);
 		return (1);
 	}
+	pthread_mutex_lock(philo->death_lock);
 	return (0);
 }
 
