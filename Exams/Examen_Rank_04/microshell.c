@@ -1,53 +1,80 @@
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <sys/wait.h>
 #include <string.h>
 
-
-void ft_execute(char **argv, int counter, int tmp_fd, char **envp)
+void ft_putstr_fd2(char *str, char *arg)
 {
-	argv[counter] = NULL;  // This Line Is Used to make a mark on the end of the command ";" or a pipe "|"
-	dup2(tmp_fd, STDIN_FILENO);
-	close(tmp_fd);
-	execve(argv[0], argv, envp);
-	putstr("Error Cannot be executed", NULL);
-	exit (1);
+    while (*str)
+        write(2, str++, 1);
+    if (arg)
+        while(*arg)
+            write(2, arg++, 1);
+    write(2, "\n", 1);
 }
 
-
-int main(int argc, char **argv, **envp)
+void ft_execute(char **av, char **ev, int counter, int tmp_fd)
 {
-	int counter = 0;
-	int fd[2];
-	int tmp_fd = dup(STDIN_FILENO);
+    av[counter] = 0;
+    dup2(tmp_fd, STDIN_FILENO);
+    close(tmp_fd);
+    execve(av[0], av, ev);
+    ft_putstr_fd2("error: cannot execute ", av[0]);
+    exit(1);
+}
 
-
-	if (argc > 1)
-	{
-		while (argv[counter] && argv[counter + 1])
-		{
-			argv = &argv[counter + 1];
-			counter++;
-			while (argv[counter] && strcmp(argv[counter], ";") && strcmp(argv[counter], "|"))
-				counter++;
-			if (strcmp(argv[0], "cd") == 0) // In case of cd commande
-			{
-				if (counter != 2)
-					putstr ("Error: cd: Bad arguments", NULL);
-				else if (chdir(argv[1] != 0)
-					putstr("error: cd: cannot change directory to ", argv[1]);
-			}
-			else if (counter != 0 (argv[counter] == NULL || strcmp(argv[counter], ";") == 0)) // In case Of A normal comamde 
-			{
-				if (fork() == 0)
-					ft_execute(argv, counter, tmp_fd, env);
-				else
-				{
-					close(tmp_fd);
-					while (waitpid(-1, NULL, WUNTRACED) != -1));
-					tmp_fd = dup(STDIN_FILENO);
-				}
-			}
-	}
-
+int main(int ac, char **av, char **ev)
+{
+    int counter = 0;
+    int fd[2];
+    int tmp_fd;
+    
+    if (ac <= 1)
+        return(1);
+    tmp_fd = dup(STDIN_FILENO);
+    while (av[counter] && av[counter + 1])
+    {
+        av = &av[counter + 1];
+        counter = 0;
+        while (av[counter] && strcmp(av[counter], ";") && strcmp(av[counter], "|"))
+            counter++;
+        if (!strcmp(av[0], "cd"))
+        {
+            if (counter != 2)
+                ft_putstr_fd2("error: cd: bad arguments", NULL);
+            else if (chdir(av[1]) != 0)
+                ft_putstr_fd2("error: cd: cannot change directory to ", av[1]);
+        }
+        else if (counter != 0 && (av[counter] == NULL || strcmp(av[counter], ";") == 0))
+        {
+            if (fork() == 0)
+                ft_execute(av, ev, counter, tmp_fd);
+            else
+            {
+                close(tmp_fd);
+                while (waitpid(-1, NULL, WUNTRACED) != -1);
+                tmp_fd = dup(STDIN_FILENO);
+            }
+        }
+        else if (counter != 0 && strcmp(av[counter], "|") == 0)
+        {
+            pipe(fd);
+            if (fork() == 0)
+            {
+                dup2(fd[1], STDOUT_FILENO);
+                close(fd[0]);
+                close(fd[1]);
+                ft_execute(av, ev, counter, tmp_fd);
+            }
+            else
+            {
+                close(fd[1]);
+                close(tmp_fd);
+                tmp_fd = fd[0];
+            }
+        }
+    }
+    close(tmp_fd);
+    return 0;
 }
